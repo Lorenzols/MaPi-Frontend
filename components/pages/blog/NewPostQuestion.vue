@@ -3,8 +3,7 @@
       <div class="box-color"></div>
       <section class="c-question">
         <hgroup>
-          <h1>¿Como hacer el mantenimiento a tu piscina?</h1>
-          <h2>Por Lorenzo el 13/01/2022 20:28</h2>
+          <h2>Aprende a mantener tu piscina.</h2>
         </hgroup>
       </section>
   </section>
@@ -17,26 +16,22 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-  $color-d: #B56D18
+  $color-c: white
   $color-text-primary: white
+
   .container
     display: flex
     height: fit-content
-    padding-top: 40px
+    padding-top: 20px
     .box-color
-      background-color: $color-d
+      background-color: $color-c
       width: 18px
     .c-question
       padding-left: 16px
       color: $color-text-primary
-      
-      h1
-        margin: 4px 0
-        font-size: 24px
-        font-weight: normal
 
       h2
         margin: 4px 0
-        font-size: 18px
+        font-size: 16px
         font-weight: normal
 </style>

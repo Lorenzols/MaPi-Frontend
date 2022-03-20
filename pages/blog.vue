@@ -1,6 +1,8 @@
 <template>
   <section class="container-blog">
-      <h1>Dentro de la page BLOG</h1>
+      <hgroup>
+          <h1>BLOG</h1>
+      </hgroup>
       <pages-blog-filter/>
       <pages-blog-question/>
       <pages-blog-question/>
@@ -21,4 +23,11 @@ export default {
         width: 100%
         background-color: $color-dark
         padding: 30px 100px
+
+        hgroup
+            text-align: center
+            h1
+                font-size: 36px
+                color: white
+                margin: 20px 0
 </style>

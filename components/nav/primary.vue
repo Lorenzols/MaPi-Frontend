@@ -1,6 +1,6 @@
 <template>
   <nav class="nav">
-      <h1>Mapi</h1>
+      <h1 class="nav-logo">MaPi</h1>
       <ul>
           <li>PISCINA</li>
           <li>BLOG</li>
@@ -29,6 +29,9 @@ export default {
         justify-content: space-between
         padding: 0 25px
 
+        &-logo
+            font-size: 24px
+            font-weight: normal
         h1
             margin: 0
 
@@ -36,7 +39,8 @@ export default {
             display: flex
             li
                 list-style: none
-                margin: 0 8px
+                margin: 0 30px
+                font-size: 18px
             
             
             

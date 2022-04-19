@@ -1,8 +1,11 @@
 <template>
   <section>
       <nav-primary />
-      <section class="c-piscina">
-         <Nuxt />
+      <section class="c-global">
+        <nav-piscina-secundary class="c-secundary"/>
+        <section class="c-piscina">
+         <Nuxt :key="$route.fullPath"/>
+        </section>
       </section>
       <footer-primary/>
   </section>
@@ -20,7 +23,12 @@ export default {
     margin: 0
     padding: 0
 
+  .c-global
+    display: flex
+
   .c-piscina
     background-color: $color-secundary
     padding: 40px
+    width: 100%
+
 </style>

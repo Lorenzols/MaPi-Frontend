@@ -1,7 +1,9 @@
 <template>
   <section>
       <h1>Historial</h1>
-      <chart-lineal />
+      <chart-lineal idChart="chartph"/>
+      <chart-lineal idChart="chartcl"/>
+      
   </section>
 </template>
 <script>

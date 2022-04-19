@@ -1,7 +1,66 @@
 <template>
-  <section>
-      <h1>Analisis</h1>
-  </section>
+    <section class="c-analisis">
+        <section class="temperatures">
+            <section >
+                <basic-climate-city sizeimg="50px"/>
+            </section>
+            <section class="c-climate">
+                <basic-climate-global srcimg="palm.png" />
+                <basic-climate-global srcimg="piscina.png" />
+            </section>
+         </section>
+
+        <section class="data-center">
+            <section class="c-data">
+                <hgroup class="c-data-title">
+                    <h1>ANALISIS DEL AGUA</h1>
+                </hgroup>
+                <section class="c-data-fact">
+                    <section class="c-data-fact-cell">
+                        <div class="c-circle">
+                            <div class="c-circle-fact circle-color-ph">
+                                <h1>6</h1>
+                            </div>
+                            <h2>Ph</h2>
+                        </div>
+                        <div class="report">
+                            <div class="report-lyrics">
+                                <h2>pH Bajo</h2>
+                            </div>
+                            <div class="report-number">
+                                <h2>1pH+</h2>
+                            </div>
+                        </div>
+                        <div class="pour">
+                            <h2>800ml</h2>
+                        </div> 
+                    </section>
+                    <section class="c-data-fact-cell">
+                        <div class="c-circle">
+                            <div class="c-circle-fact circle-color-ppm">
+                                <h1>0.9</h1>
+                            </div>
+                            <h2>ppm</h2>
+                        </div>
+
+                        <div class="report">
+                            <div class="report-lyrics">
+                                <h2>ppm Bajo</h2>
+                            </div>
+                            <div class="report-number">
+                                <h2>0.4ppm</h2>
+                            </div>
+                        </div>
+
+                        <div class="pour">
+                            <h2>450ml</h2>
+                        </div> 
+                    </section>
+                </section>                
+            </section>
+        </section>
+
+    </section>
 </template>
 
 <script>
@@ -10,6 +69,89 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass" scoped>
+    .c-analisis
+        height: calc( 100vh - 48px )
+        display: flex
+        flex-direction: column
+        position: relative
+    .temperatures
+        display: flex
+        justify-content: space-between
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 15%
+        padding: 40px
+        box-sizing: border-box
+
+    .c-climate
+        display: flex
+
+    .data-center
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+    .c-data
+        width: fit-content
+
+        &-title
+            text-align: center
+            margin: 40px 0
+            font-size: 24px
+
+        &-fact
+            display: flex
+            &-cell
+                width: 200px
+                margin: 0 20px
+
+                .c-circle
+                    .circle-color-ph
+                        border-color: #D03DB0
+                    .circle-color-ppm
+                        border-color: #2A6F9C
+                    &-fact
+                        width: 150px
+                        height: 150px
+                        border: 5px solid
+                        border-radius: 50%
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        margin: 0 auto
+
+                        h1
+                            font-size: 48px
+
+                    h2
+                        text-align: center
+                        margin-top: 10px
+                
+                .report
+                    display: flex
+                    border: 2px solid #844213
+                    margin: 20px 0
+                    &-lyrics
+                        width: 50%
+                        border-right: 2px solid #844213
+                        padding: 5px 10px
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                    &-number
+                        width: 50%
+                        padding: 5px 10px
+                        display: flex
+                        align-items: center
+                        justify-content: center
+
+                .pour
+                    border: 2px solid #844213
+                    text-align: center
+                    padding: 5px 0
+
 
 </style>

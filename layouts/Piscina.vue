@@ -28,7 +28,6 @@ export default {
 
   .c-piscina
     background-color: $color-secundary
-    padding: 40px
     width: 100%
 
 </style>

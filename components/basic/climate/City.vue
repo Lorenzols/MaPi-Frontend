@@ -4,8 +4,8 @@
           <img src="~/assets/img/piscina/sun.png" alt="City temperature" width="100%" height="100%">
       </div>
       <div class="c-climate-city-c-text">
-          <h2>Valencia</h2>
-          <h2>30 ºC</h2>
+          <h2 :class="{'big-text': isbigtext}">Valencia</h2>
+          <h2 :class="{'big-text': isbigtext}">30 ºC</h2>
       </div>
   </section>
 </template>
@@ -16,6 +16,10 @@ export default {
         sizeimg: {
             type: String,
             required: true
+        },
+        isbigtext: {
+            type: Boolean,
+            required: false
         }
     }
 }
@@ -30,4 +34,8 @@ export default {
             display: flex
             flex-direction: column
             justify-content: center
+
+    .big-text
+        font-size: 36px !important
+        
 </style>

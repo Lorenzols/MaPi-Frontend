@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="c-checkbox">
     <label class="content-input">
       <input type="checkbox" name="Vehiculo" id="autopista" value="autopista">
       <i></i>
@@ -20,7 +20,6 @@ export default {
 
   .content-input
     position: relative
-    margin-bottom: 30px
     padding: 5px 0 5px 60px
     display: block
 

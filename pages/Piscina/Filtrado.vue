@@ -1,12 +1,12 @@
 <template>
   <section class="c-filtered">
-      <h1 class="c-filtered-title">Filtrado</h1>
+      <h1 class="c-filtered-title">FILTRADO</h1>
       <div class="c-filtered-automatic">
-        <h2 class="c-filtered-automatic-text-button">Bomba de agua automatica</h2>
+        <h1 class="c-filtered-automatic-text-button">Bomba de agua automatica</h1>
         <basic-button-checkbox />
       </div>
       <div class="c-filtered-schedule">
-        <h2 class="c-filtered-schedule-title">Horario de filtrado</h2>
+        <h1 class="c-filtered-schedule-title">Horario de filtrado</h1>
         <pages-pool-filtered-boxtime />
         <div class="c-filtered-schedule-button">
           <button @click="newtime()">Nueva</button>
@@ -50,7 +50,6 @@ export default {
 
     &-title
       margin: 40px 0
-      font-size: 36px
 
     &-automatic
       width: 70%
@@ -74,6 +73,7 @@ export default {
           padding: 5px 15px
           border-radius: 5px
           cursor: pointer
+          font-size: 19px
       &-new
         width: 70%
         display: flex

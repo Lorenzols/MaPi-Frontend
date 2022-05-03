@@ -1,6 +1,6 @@
 <template>
   <section class="c-history">
-      <h1 class="c-history-title">Historial</h1>
+      <h1 class="c-history-title">HISTORIAL</h1>
       <chart-lineal idChart="chartph"/>
       <chart-lineal idChart="chartcl"/>
       
@@ -21,6 +21,5 @@ export default {
     &-title
       margin-bottom: 40px
       text-align: center
-      font-size: 36px
 
 </style>

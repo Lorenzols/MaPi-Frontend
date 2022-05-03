@@ -1,11 +1,11 @@
 <template>
   <nav class="nav">
       <h1 class="nav-logo">MaPi</h1>
-      <ul>
+      <!-- <ul>
           <li>PISCINA</li>
           <li>BLOG</li>
           <li>TIENDA</li>
-      </ul>
+      </ul> -->
       <section>
           <h1>Iniciar sesión</h1>
       </section>

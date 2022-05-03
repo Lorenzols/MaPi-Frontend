@@ -1,6 +1,6 @@
 <template>
   <section class="c-configuration">
-    <h1 class="c-configuration-title">Configuración</h1>
+    <h1 class="c-configuration-title">CONFIGURACIÓN</h1>
     <section class="c-box">
       <hgroup class="c-box-title">
         <h1>CLIMA</h1>
@@ -53,7 +53,6 @@ export default {
     padding-top: 40px
     &-title
       text-align: center
-      font-size: 36px
 
   .c-box
     padding: 40px 0

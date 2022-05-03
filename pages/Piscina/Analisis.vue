@@ -23,12 +23,10 @@
                 </section>
             </section>
          </section>
-
-        <section class="data-center">
+        <hgroup class="title">
+                <h1>ANALISIS DEL AGUA</h1>
+        </hgroup>
             <section class="c-data">
-                <hgroup class="c-data-title">
-                    <h1>ANALISIS DEL AGUA</h1>
-                </hgroup>
                 <section class="c-data-fact">
                     <section class="c-data-fact-cell">
                         <div class="c-circle">
@@ -72,7 +70,6 @@
                     </section>
                 </section>                
             </section>
-        </section>
 
     </section>
 </template>
@@ -101,16 +98,12 @@ export default {
         padding: 40px
         box-sizing: border-box
 
-    .c-climate
-        display: flex
-
-    .data-center
+    .c-data
+        width: 100%
         height: 100%
         display: flex
         align-items: center
         justify-content: center
-    .c-data
-        width: fit-content
 
         &-title
             text-align: center
@@ -120,8 +113,10 @@ export default {
 
         &-fact
             display: flex
+            width: 50%
+            justify-content: space-evenly
             &-cell
-                width: 200px
+                width: 300px
                 margin: 0 20px
 
                 .c-circle
@@ -130,8 +125,8 @@ export default {
                     .circle-color-ppm
                         border-color: #2A6F9C
                     &-fact
-                        width: 150px
-                        height: 150px
+                        width: 200px
+                        height: 200px
                         border: 5px solid
                         border-radius: 50%
                         display: flex
@@ -180,6 +175,11 @@ export default {
             display: flex
             align-items: center
             margin: 0 5px
+    .title
+        width: 100%
+        text-align: center
+        position: absolute
+        top: 40px   
 
 
 </style>

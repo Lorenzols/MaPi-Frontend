@@ -36,6 +36,6 @@ export default {
             justify-content: center
 
     .big-text
-        font-size: 36px !important
+        font-size: 24px !important
         
 </style>

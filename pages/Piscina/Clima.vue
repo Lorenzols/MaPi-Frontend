@@ -1,17 +1,19 @@
 <template>
   <section class="c-climate">
-      <h1 class="c-climate-title">Clima</h1>
-      <basic-climate-city sizeimg="180px" :isbigtext="true"/>
-      <section class="c-pool">
-        <div class="c-pool-climate">
-          <h1>20 ºC</h1>
-        </div>
-        <div class="c-pool-image">
-          <img src="~/assets/img/piscina/climate/pool.png" alt="">
-        </div>
-        <div class="c-pool-water">
-        <h1>19 ºC</h1>
-        </div>
+      <h1 class="c-climate-title">CLIMA</h1>
+      <section class="c-data">
+        <basic-climate-city sizeimg="180px" :isbigtext="true" class="c-data-climate-city"/>
+        <section class="c-pool">
+          <div class="c-pool-climate">
+            <h1>20 ºC</h1>
+          </div>
+          <div class="c-pool-image">
+            <img src="~/assets/img/piscina/climate/pool.png" alt="">
+          </div>
+          <div class="c-pool-water">
+            <h1>19 ºC</h1>
+          </div>
+        </section>
       </section>
   </section>
 </template>
@@ -28,24 +30,29 @@ export default {
     display: flex
     flex-direction: column
     align-items: center
-    // justify-content: center
-    gap: 70px
-    width: 70%
+    width: 50%
     margin: 0 auto
 
     &-title
       margin-top: 40px
-      font-size: 36px
+
+  .c-data
+    display: flex
+    align-items: center
+    width: 100%
+    height: calc( 100% - 72px )
+    justify-content: space-evenly
+
   .c-pool
     width: 500px
     position: relative
+    height: fit-content
 
     &-climate
       position: absolute
       top: 20px
       left: 70px
-      h1
-        font-size: 30px
+
     &-image
       width: 100%
       img
@@ -57,7 +64,5 @@ export default {
       background-color: #1D4852
       padding: 5px 10px
       border-radius: 10px
-      h1
-        font-size: 30px
     
 </style>

@@ -2,7 +2,7 @@
   <section class="c-treatment">
     <div class="c-treatment-secundary">
       <hgroup class="c-treatment-secundary-title">
-        <h1>Tratamiento del agua</h1>
+        <h1>TRATAMIENTO DEL AGUA</h1>
       </hgroup>
       <div class="container">
         <section class="c-data">
@@ -168,8 +168,6 @@ export default {
       &-title
         text-align: center
         margin-top: 40px
-        h1
-          font-size: 36px
 
   .container
     display: flex
@@ -181,8 +179,7 @@ export default {
     &-title
       text-align: center
       margin: 40px
-      h1
-        font-size: 36px
+
     &-status
       display: flex
       border: 2px solid #844213
@@ -221,11 +218,11 @@ export default {
         width: fit-content
         margin: 15px auto
         img
-          width: 200px
+          width: 150px
         &-text
           position: absolute
           bottom: 40px
-          left: 90px
+          left: 60px
 
           h1
             font-size: 36px
@@ -234,6 +231,7 @@ export default {
 
   .automatic
     margin-top: 40px
+    margin-bottom: 10px
     display: flex
     gap: 20px
 

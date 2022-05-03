@@ -2,8 +2,8 @@
   <section class="c-treatment">
     <div class="c-treatment-secundary">
       <hgroup class="c-treatment-secundary-title">
-      <h1>Tratamiento del agua</h1>
-    </hgroup>
+        <h1>Tratamiento del agua</h1>
+      </hgroup>
       <div class="container">
         <section class="c-data">
           <div class="c-data-title">
@@ -157,7 +157,7 @@ export default {
 
 <style lang="sass" scoped>
   .c-treatment
-    height: calc( 100vh - 48px )
+    // height: calc( 100vh - 48px )
     display: flex
     flex-direction: column
     align-items: center
@@ -167,6 +167,7 @@ export default {
       width: 70%
       &-title
         text-align: center
+        margin-top: 40px
         h1
           font-size: 36px
 

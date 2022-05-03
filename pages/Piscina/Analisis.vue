@@ -5,8 +5,22 @@
                 <basic-climate-city sizeimg="50px"/>
             </section>
             <section class="c-climate">
-                <basic-climate-global srcimg="palm.png" />
-                <basic-climate-global srcimg="piscina.png" />
+                <section class="c-climate">
+                    <div class="c-climate-image">
+                        <img src="~/assets/img/piscina/palm.png" alt="Climate" width="100%" height="100%">
+                    </div>
+                    <div class="c-climate-text">
+                        <h2>32 ºC</h2>
+                    </div>
+                </section>
+                <section class="c-climate">
+                    <div class="c-climate-image">
+                        <img src="~/assets/img/piscina/piscina.png" alt="Climate" width="100%" height="100%">
+                    </div>
+                    <div class="c-climate-text">
+                        <h2>32 ºC</h2>
+                    </div>
+                </section>
             </section>
          </section>
 
@@ -71,7 +85,8 @@ export default {
 
 <style lang="sass" scoped>
     .c-analisis
-        height: calc( 100vh - 48px )
+        // height: calc( 100vh - 48px )
+        height: 100%
         display: flex
         flex-direction: column
         position: relative
@@ -100,7 +115,8 @@ export default {
         &-title
             text-align: center
             margin: 40px 0
-            font-size: 24px
+            h1
+                font-size: 36px
 
         &-fact
             display: flex
@@ -152,6 +168,18 @@ export default {
                     border: 2px solid #844213
                     text-align: center
                     padding: 5px 0
+    .c-climate
+        display: flex
+        margin: 10px 20px
+
+        &-image
+            width: 50px
+            height: 50px
+
+        &-text
+            display: flex
+            align-items: center
+            margin: 0 5px
 
 
 </style>

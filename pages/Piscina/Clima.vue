@@ -24,7 +24,7 @@ export default {
 
 <style lang="sass" scoped>
   .c-climate
-    height: calc( 100vh - 48px )
+    height: 100%
     display: flex
     flex-direction: column
     align-items: center
@@ -35,6 +35,7 @@ export default {
 
     &-title
       margin-top: 40px
+      font-size: 36px
   .c-pool
     width: 500px
     position: relative

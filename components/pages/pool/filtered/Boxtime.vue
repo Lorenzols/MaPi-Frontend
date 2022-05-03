@@ -3,7 +3,7 @@
       <div class="c-filtered-schedule-box-close" v-if="close">
           <img src="~/assets/img/piscina/filtered/close.png" alt="" width="100%">
       </div>
-    <div class="c-primary">
+    <div class="c-primary-time">
         <div class="c-filtered-schedule-box-container">
         <div class="c-filtered-schedule-box-container-time">
             <h2>Hora de encendido</h2>
@@ -85,7 +85,7 @@ export default {
             right: 12px
             cursor: pointer
 
-        .c-primary
+        .c-primary-time
             display: flex
             justify-content: space-between
 

@@ -45,10 +45,12 @@ export default {
     display: flex
     flex-direction: column
     align-items: center
-    height: calc( 100vh - 48px )
-    
+    height: 100%
+    padding-bottom: 40px
+
     &-title
       margin: 40px 0
+      font-size: 36px
 
     &-automatic
       width: 70%

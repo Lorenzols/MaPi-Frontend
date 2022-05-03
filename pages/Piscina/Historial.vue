@@ -1,6 +1,6 @@
 <template>
-  <section>
-      <h1>Historial</h1>
+  <section class="c-history">
+      <h1 class="c-history-title">Historial</h1>
       <chart-lineal idChart="chartph"/>
       <chart-lineal idChart="chartcl"/>
       
@@ -14,4 +14,13 @@ export default {
 
 <style lang="sass" scoped>
   $color-secundary: #522C1D
+  .c-history
+    width: 70%
+    margin: 0 auto
+    padding: 40px 0
+    &-title
+      margin-bottom: 40px
+      text-align: center
+      font-size: 36px
+
 </style>

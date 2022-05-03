@@ -14,8 +14,8 @@
 export default {
     props:{
         valuenumber:{
-            type: Number,
-            required: true
+            type: String,
+            required: false
         },
         extent: {
             type: String,

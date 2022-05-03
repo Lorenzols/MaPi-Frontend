@@ -11,10 +11,14 @@ export default {
 </script>
 
 <style lang="sass">
-    .footer
-        background-color: black
+  .footer
+      background-color: #103f4a
+      height: 48px
+      margin-top: auto
+      display: flex
+      justify-content: center
+      align-items: center
+      h2
+        margin: 0
         color: white
-        height: 48px
-        h2
-          margin: 0
 </style>

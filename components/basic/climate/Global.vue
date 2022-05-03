@@ -1,7 +1,7 @@
 <template>
   <section class="c-climate">
       <div class="c-climate-image">
-          <img :src="'/_nuxt/assets/img/piscina/'+srcimg" alt="Climate" width="100%" height="100%">
+          <img :src="'~/assets/img/piscina/'+srcimg" alt="Climate" width="100%" height="100%">
       </div>
       <div class="c-climate-text">
           <h2>32 ºC</h2>

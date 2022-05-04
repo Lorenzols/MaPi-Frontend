@@ -1,5 +1,5 @@
 <template>
-    <section class="c-analisis">
+    <section class="c-analisis" v-if="!isNavSecundary">
         <section class="temperatures">
             <section >
                 <basic-climate-city sizeimg="50px"/>
@@ -76,7 +76,11 @@
 
 <script>
 export default {
-
+    computed: {
+        isNavSecundary() {
+            return this.$store.state.navSecundary.isNavSecundary
+        }
+    }
 }
 </script>
 
@@ -87,6 +91,9 @@ export default {
         display: flex
         flex-direction: column
         position: relative
+        @media (max-width: 767px)
+            margin-bottom: 40px
+
     .temperatures
         display: flex
         justify-content: space-between
@@ -97,6 +104,11 @@ export default {
         height: 15%
         padding: 40px
         box-sizing: border-box
+        @media (max-width: 767px)
+            top: 80px
+            height: fit-content
+            padding: 10px
+            
 
     .c-data
         width: 100%
@@ -104,6 +116,8 @@ export default {
         display: flex
         align-items: center
         justify-content: center
+        @media (max-width: 767px)
+            margin-top: 140px
 
         &-title
             text-align: center
@@ -115,9 +129,16 @@ export default {
             display: flex
             width: 50%
             justify-content: space-evenly
+            @media (max-width: 767px)
+                display: block
+                width: fit-content
             &-cell
                 width: 300px
                 margin: 0 20px
+                @media (max-width: 767px)
+                    margin: 0
+                    margin-top: 40px
+                    width: 100%
 
                 .c-circle
                     .circle-color-ph
@@ -133,6 +154,9 @@ export default {
                         align-items: center
                         justify-content: center
                         margin: 0 auto
+                        @media (max-width: 767px)
+                            width: 180px
+                            height: 180px
 
                         h1
                             font-size: 48px
@@ -166,6 +190,8 @@ export default {
     .c-climate
         display: flex
         margin: 10px 20px
+        @media (max-width: 767px)
+            margin: 2px
 
         &-image
             width: 50px

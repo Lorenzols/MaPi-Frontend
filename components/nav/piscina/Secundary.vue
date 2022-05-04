@@ -42,6 +42,11 @@ export default {
         padding: 0 25px
         background-color: #a36142
         position: relative
+        @media (max-width: 767px)
+            // position: absolute
+            // top: 48px
+            // bottom: 48px
+            z-index: 1
 
         ul
             list-style: none

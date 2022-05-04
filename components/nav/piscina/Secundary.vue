@@ -1,6 +1,12 @@
 <template>
     <section class="c-secundary">
-        <ul>
+        <section class="c-secundary-nav" v-on:click="click" v-if="isNavSecundary">
+            <img src="~/assets/img/piscina/angleLeftWhite.png" alt="">
+        </section>
+        <section class="c-secundary-nav" v-on:click="click" v-if="!isNavSecundary">
+            <img src="~/assets/img/piscina/angleRightWhite.png" alt="">
+        </section>
+        <ul v-if="isNavSecundary">
             <li> <NuxtLink to="/piscina/analisis">ANALISIS</NuxtLink></li>
             <li> <NuxtLink to="/piscina/clima">CLIMA</NuxtLink></li>
             <li> <NuxtLink to="/piscina/tratamiento">TRATAMIENTO</NuxtLink></li>
@@ -12,8 +18,19 @@
 </template>
 
 <script>
-export default {
+import { mapMutations } from 'vuex'
 
+export default {
+    computed: {
+        isNavSecundary() {
+            return this.$store.state.navSecundary.isNavSecundary
+        }
+    },
+    methods: {
+        ...mapMutations({
+            click: 'navSecundary/click'
+        })
+    }
 }
 </script>
 
@@ -22,8 +39,9 @@ export default {
         width: fit-content
         display: flex
         align-items: center
-        padding: 0 20px
+        padding: 0 25px
         background-color: #a36142
+        position: relative
 
         ul
             list-style: none
@@ -34,7 +52,14 @@ export default {
                 a
                     text-decoration: none
                     color: white
-                
+        &-nav
+            position: absolute
+            top: 20px
+            right: 20px
+            width: 15px
+            cursor: pointer
+            img
+                width: 100%
     .nuxt-link-exact-active
         font-weight: bold
 

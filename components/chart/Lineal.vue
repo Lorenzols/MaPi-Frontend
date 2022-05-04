@@ -150,6 +150,8 @@ export default {
     border-radius: 4px
     position: relative
     z-index: 1
+    @media (max-width: 767px)
+        width: 100%
 
 .line-chart-canvas   
     // z-index: -1

@@ -28,6 +28,14 @@ export default {
 <style lang="sass" scoped>
     .c-climate-city
         display: flex
+        @media (max-width: 767px)
+            width: fit-content
+            padding: 20px 0
+
+        &-image
+            @media (max-width: 767px)
+                width: 80px
+                height: 80px 
 
         &-c-text
             padding: 0 20px

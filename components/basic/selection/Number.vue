@@ -38,6 +38,8 @@ export default {
             display: flex
             align-items: center
             justify-content: center
+            @media (max-width: 767px)
+                padding-left: 10px
         &-buttons
             width: 50%
             display: flex

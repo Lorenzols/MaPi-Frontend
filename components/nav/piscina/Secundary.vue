@@ -1,9 +1,9 @@
 <template>
-    <section class="c-secundary">
+    <section class="c-secundary" :class=" !isNavSecundary ? 'p-position' : '' ">
         <section class="c-secundary-nav" v-on:click="click" v-if="isNavSecundary">
             <img src="~/assets/img/piscina/angleLeftWhite.png" alt="">
         </section>
-        <section class="c-secundary-nav" v-on:click="click" v-if="!isNavSecundary">
+        <section class="c-secundary-nav" v-on:click="click" v-if="!isNavSecundary" :class=" !isNavSecundary ? 'p-arrow' : '' ">
             <img src="~/assets/img/piscina/angleRightWhite.png" alt="">
         </section>
         <ul v-if="isNavSecundary">
@@ -41,7 +41,11 @@ export default {
         align-items: center
         padding: 0 25px
         background-color: #a36142
-        position: relative
+        position: fixed
+        top: 0
+        bottom: 0
+        z-index: 1
+
         @media (max-width: 767px)
             // position: absolute
             // top: 48px
@@ -59,13 +63,27 @@ export default {
                     color: white
         &-nav
             position: absolute
-            top: 20px
+            top: 60px
             right: 20px
             width: 15px
             cursor: pointer
+            background-color: #a36142
+
             img
                 width: 100%
     .nuxt-link-exact-active
         font-weight: bold
+    
+    .p-position
+        position: absolute
+        height: fit-content
+        top: 60px
+
+    .p-arrow
+        top: 15px
+        left: 10px
+        padding: 5px 10px
+        border-radius: 4px
+
 
 </style>

@@ -28,6 +28,7 @@ export default {
         color: white
         justify-content: space-between
         padding: 0 25px
+        z-index: 2
 
         &-logo
             font-size: 24px

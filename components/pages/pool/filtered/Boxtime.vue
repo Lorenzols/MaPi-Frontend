@@ -77,6 +77,9 @@ export default {
         box-sizing: border-box
         padding: 20px 60px
         position: relative
+        @media (max-width: 767px)
+            padding: 20px 30px
+            padding-top: 10px
 
         &-close
             position: absolute
@@ -88,12 +91,17 @@ export default {
         .c-primary-time
             display: flex
             justify-content: space-between
+            @media (max-width: 767px)
+                display: block
 
         &-container
             width: 40%
             border: 2px solid #844213
             display: flex
             box-sizing: border-box
+            @media (max-width: 767px)
+                width: 100%
+                margin-top: 20px
             &-time
                 padding: 5px 0
                 text-align: center
@@ -119,6 +127,7 @@ export default {
             display: flex
             gap: 20px
             margin-top: 20px
+            flex-wrap: wrap
 
             li
                 list-style: none

@@ -172,10 +172,15 @@ export default {
   .container
     display: flex
     justify-content: space-between
+    @media (max-width: 767px)
+      display: block
 
   .c-data
     width: 40%
     min-width: 300px
+    @media (max-width: 767px)
+      min-width: 240px
+
     &-title
       text-align: center
       margin: 40px
@@ -234,6 +239,7 @@ export default {
     margin-bottom: 10px
     display: flex
     gap: 20px
+    
 
   .c-automatic
     width: 70%
@@ -242,8 +248,13 @@ export default {
     border: 2px solid #EA7F54
     box-sizing: border-box
     padding: 20px 40px
+    @media (max-width: 767px)
+      display: block
+      
     &-worth
       width: 40%
+      @media (max-width: 767px)
+        width: 100%
       &-status
         display: flex
         border: 2px solid #844213

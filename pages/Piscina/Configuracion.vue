@@ -63,12 +63,16 @@ export default {
     border: 2px solid #844213
     width: 400px
     margin-top: 10px
+    @media (max-width: 767px)
+      width: 100%
     &-text
       padding: 10px 0
       width: 50%
       display: flex
       align-items: center
       justify-content: center
+      @media (max-width: 767px)
+        padding: 10px 10px
       &-primary
         border-right: 2px solid #844213
         h2

@@ -1,5 +1,5 @@
 <template>
-    <section class="c-analisis" v-if="!isNavSecundary">
+    <section class="c-analisis" >
         <section class="temperatures">
             <section >
                 <basic-climate-city sizeimg="50px"/>
@@ -102,7 +102,7 @@ export default {
         left: 0
         width: 100%
         height: 15%
-        padding: 40px
+        padding: 40px 90px
         box-sizing: border-box
         @media (max-width: 767px)
             top: 80px
@@ -155,8 +155,8 @@ export default {
                         justify-content: center
                         margin: 0 auto
                         @media (max-width: 767px)
-                            width: 180px
-                            height: 180px
+                            width: 160px
+                            height: 160px
 
                         h1
                             font-size: 48px

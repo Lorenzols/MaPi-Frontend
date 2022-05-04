@@ -42,16 +42,29 @@ export default {
     width: 100%
     height: calc( 100% - 72px )
     justify-content: space-evenly
+    @media (max-width: 1023px)
+      display: block
+      margin-top: 40px
+    @media (max-width: 767px)
+      display: block
+      width: fit-content
 
   .c-pool
     width: 500px
+    min-width: 500px
     position: relative
     height: fit-content
+    @media (max-width: 767px)
+      width: 250px
+      min-width: 250px
 
     &-climate
       position: absolute
       top: 20px
       left: 70px
+      @media (max-width: 767px)
+        top: 10px
+        left: 40px
 
     &-image
       width: 100%
@@ -64,5 +77,16 @@ export default {
       background-color: #1D4852
       padding: 5px 10px
       border-radius: 10px
+      @media (max-width: 767px)
+        bottom: 40px
+        right: 70px
+
+  .c-data-climate-city ::v-deep .c-climate-city-image
+    @media (max-width: 767px)
+      width: fit-content !important
+      height: fit-content !important
+      img
+        width: 80px
+        height: 80px
     
 </style>

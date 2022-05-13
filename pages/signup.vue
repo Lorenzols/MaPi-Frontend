@@ -32,13 +32,23 @@ export default {
             let data = document.querySelectorAll('input')
 
             data.forEach(function(item){
-                object[item.id] = item.value
-                item.value = ''
+                if(item.type == 'checkbox'){
+                    object[item.id] = item.checked
+                    item.checked = false
+                }else{
+                    object[item.id] = item.value
+                    item.value = ''
+                }
             })
             console.log("Enviado", object)
 
-            let res = await this.$axios.post(`/api/auth/signup`, object)
-            console.log("aqui: ", res)
+            try{
+                let res = await this.$axios.post(`/api/auth/signup`, object)
+                console.log("aqui: ", res)
+            }catch(error){
+                console.log("Error: ", error)
+            }
+            
         }
     }
 }

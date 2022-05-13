@@ -1,5 +1,5 @@
 export const state = () => ({
-    isNavSecundary: true
+    isNavSecundary: false
 })
 
 export const mutations = {

@@ -17,9 +17,7 @@
         </form>
         <div class="line"></div>
 
-        <div class="btn-secundary">
-            <NuxtLink to="/signin">Iniciar sesión</NuxtLink>
-        </div>
+        <NuxtLink class="btn-secundary" to="/signin">Iniciar sesión</NuxtLink>
     </section>
 </template>
 
@@ -68,19 +66,19 @@ export default {
             border: none
             border-radius: 5px
             font-size: 22px
+            cursor: pointer
 
         &-secundary
             background: #FFD8AB
             padding: 15px
             width: 100%
             border-radius: 5px
-            text-align: center
+            color: #522C1D
+            font-size: 22px
+            text-decoration: none
+            display: block
             box-sizing: border-box
-            
-            a
-                color: #522C1D
-                font-size: 22px
-                text-decoration: none
+            text-align: center
 
 
     .line

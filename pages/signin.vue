@@ -7,14 +7,15 @@
             <input type="email" placeholder="E-mail">
             <input type="password" placeholder="Contraseña">
             <div class="c-signup-form-rec">
-                <p>He olvidado la cobtraseña</p>
+                <p>He olvidado la contraseña</p>
             </div>
 
-            <button class="btn-primary">Crear cuenta</button>
+            <button class="btn-primary">Iniciar sesión</button>
+            
         </form>
         <div class="line"></div>
 
-        <button class="btn-secundary">Iniciar sesión</button>
+        <NuxtLink class="btn-secundary" to="/signup">Crear cuenta</NuxtLink>
     </section>
 </template>
 
@@ -63,15 +64,19 @@ export default {
             border: none
             border-radius: 5px
             font-size: 22px
+            cursor: pointer
 
         &-secundary
             background: #FFD8AB
             padding: 15px
             width: 100%
-            border: none
             border-radius: 5px
             color: #522C1D
             font-size: 22px
+            text-decoration: none
+            display: block
+            box-sizing: border-box
+            text-align: center
 
 
     .line

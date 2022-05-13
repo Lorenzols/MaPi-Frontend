@@ -1,13 +1,13 @@
 <template>
   <nav class="nav">
-      <h1 class="nav-logo">MaPi</h1>
+      <NuxtLink class="nav-logo" to="/piscina/analisis">MaPi</NuxtLink>
       <!-- <ul>
           <li>PISCINA</li>
           <li>BLOG</li>
           <li>TIENDA</li>
       </ul> -->
       <section>
-          <h1>Iniciar sesión</h1>
+          <NuxtLink v-if="$route.path != '/signin'" class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
       </section>
   </nav>
 </template>
@@ -33,8 +33,13 @@ export default {
         &-logo
             font-size: 24px
             font-weight: normal
-        h1
+            text-decoration: none
+
+        &-signin
             margin: 0
+            font-size: 22px
+            cursor: pointer
+            text-decoration: none
 
         ul
             display: flex

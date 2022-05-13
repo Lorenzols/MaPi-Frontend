@@ -50,7 +50,7 @@ export default {
                 border: 2px solid white
                 background: #a36142
                 border-radius: 5px
-                font-size: 22px
+                font-size: 20px
                 
                 &::placeholder
                     color: white

@@ -37,13 +37,20 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    '@nuxtjs/axios'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/piscina',
+    // baseURL: 'http://localhost:8000',
+    // prefix: 'http://localhost:8000',
+    proxy: true 
+  },
+
+  proxy: {
+    '/api/': { target: 'http://localhost:8000', pathRewrite: {'^/api/': ''} }
+    // '/api/': 'http://localhost:8000'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

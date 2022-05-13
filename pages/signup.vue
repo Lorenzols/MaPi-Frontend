@@ -3,18 +3,20 @@
         <hgroup>
             <h1>Crear cuenta</h1>
         </hgroup>
-        <form class="c-signup-form">
-            <input type="text" placeholder="Nombre">
-            <input type="email" placeholder="E-mail">
-            <input type="password" placeholder="Contraseña">
-            <input type="password" placeholder="Repetir contraseña">
+        <form class="c-signup-form" id="signup">
+            <input type="text" placeholder="Nombre" id="name">
+            <input type="email" placeholder="E-mail" id="email">
+            <input type="password" placeholder="Contraseña" id="passport1">
+            <input type="password" placeholder="Repetir contraseña" id="passport2">
             <div class="c-signup-form-check">
-                <input type="checkbox">
+                <input type="checkbox" id="check_email">
                 <p>Recibir notificaciones por e-mail</p>
             </div>
-
-            <button class="btn-primary">Crear cuenta</button>
         </form>
+        <div class="btn-primary" v-on:click="sendData()">
+            <p>Crear cuenta</p>
+        </div>
+
         <div class="line"></div>
 
         <NuxtLink class="btn-secundary" to="/signin">Iniciar sesión</NuxtLink>
@@ -23,7 +25,22 @@
 
 <script>
 export default {
-    layout: 'Piscina'
+    layout: 'Piscina',
+    methods:{
+        async sendData(){
+            let object = {}
+            let data = document.querySelectorAll('input')
+
+            data.forEach(function(item){
+                object[item.id] = item.value
+                item.value = ''
+            })
+            console.log("Enviado", object)
+
+            let res = await this.$axios.post(`/api/auth/signup`, object)
+            console.log("aqui: ", res)
+        }
+    }
 }
 </script>
 
@@ -67,6 +84,10 @@ export default {
             border-radius: 5px
             font-size: 22px
             cursor: pointer
+            width: 100%
+            margin-top: 10px
+            box-sizing: border-box
+            text-align: center
 
         &-secundary
             background: #FFD8AB

@@ -10,8 +10,7 @@
                 <p>He olvidado la contraseña</p>
             </div>
 
-            <button class="btn-primary">Iniciar sesión</button>
-            
+            <button class="btn-primary" >Iniciar sesión</button>
         </form>
         <div class="line"></div>
 
@@ -48,7 +47,7 @@ export default {
                 border: 2px solid white
                 background: #a36142
                 border-radius: 5px
-                font-size: 22px
+                font-size: 20px
                 
                 &::placeholder
                     color: white

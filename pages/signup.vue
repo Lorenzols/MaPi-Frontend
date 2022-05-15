@@ -6,8 +6,8 @@
         <form class="c-signup-form" id="signup">
             <input type="text" placeholder="Nombre" id="name">
             <input type="email" placeholder="E-mail" id="email">
-            <input type="password" placeholder="Contraseña" id="passport1">
-            <input type="password" placeholder="Repetir contraseña" id="passport2">
+            <input type="password" placeholder="Contraseña" id="password">
+            <input type="password" placeholder="Repetir contraseña" id="password2">
             <div class="c-signup-form-check">
                 <input type="checkbox" id="check_email">
                 <p>Recibir notificaciones por e-mail</p>
@@ -44,6 +44,11 @@ export default {
 
             try{
                 let res = await this.$axios.post(`/api/auth/signup`, object)
+                console.log('se: ',res.data.session)
+                if(res.data.session){
+                    this.$store.commit('session/signup', res.data)
+                    this.$router.push('/piscina/analisis')
+                }
                 console.log("aqui: ", res)
             }catch(error){
                 console.log("Error: ", error)

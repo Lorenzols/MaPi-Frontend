@@ -6,8 +6,14 @@
           <li>BLOG</li>
           <li>TIENDA</li>
       </ul> -->
-      <section>
+      <section v-if="$store.state.session.status">
+          <p>Iniciado</p>
+          <p>ID: {{this.$store.state.session.id}}</p>
+      </section>
+      <section v-else>
           <NuxtLink v-if="$route.path != '/signin'" class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
+          <p>{{this.$store.state.session.status}}</p>
+          <p>{{this.$store.state.session.id}}</p>
       </section>
   </nav>
 </template>

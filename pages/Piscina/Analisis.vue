@@ -76,6 +76,7 @@
 
 <script>
 export default {
+    middleware: "isAuthenticated",
     computed: {
         isNavSecundary() {
             return this.$store.state.navSecundary.isNavSecundary

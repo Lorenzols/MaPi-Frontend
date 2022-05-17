@@ -1,26 +1,26 @@
 <template>
-  <nav class="nav">
-      <NuxtLink class="nav-logo" to="/piscina/analisis">MaPi</NuxtLink>
-      <!-- <ul>
-          <li>PISCINA</li>
-          <li>BLOG</li>
-          <li>TIENDA</li>
-      </ul> -->
-      <section v-if="$store.state.session.status">
-          <p>Iniciado</p>
-          <p>ID: {{this.$store.state.session.id}}</p>
-      </section>
-      <section v-else>
-          <NuxtLink v-if="$route.path != '/signin'" class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
-          <p>{{this.$store.state.session.status}}</p>
-          <p>{{this.$store.state.session.id}}</p>
-      </section>
+    <nav class="nav">
+        <NuxtLink class="nav-logo" to="/piscina/analisis">MaPi</NuxtLink>
+        <!-- <ul>
+            <li>PISCINA</li>
+            <li>BLOG</li>
+            <li>TIENDA</li>
+        </ul> -->
+        <section v-if="$store.state.session.status">
+            <p>Iniciado</p>
+            <p>ID: {{this.$store.state.session.id}}</p>
+        </section>
+        <section v-else>
+            <NuxtLink v-if="$route.path != '/signin'" class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
+            <p>{{this.$store.state.session.status}}</p>
+            <p>{{this.$store.state.session.id}}</p>
+        </section>
 
-      <li class="nav-item" @click="logout">
-            <!-- <nuxt-link class="nav-link active" aria-current="page" to="/signin">Logout</nuxt-link> -->
-            <p>adioos</p>
-        </li>
-        <p>{{this.$store.state.auth.loggedIn}}</p>
+        <secction class="nav-logout" @click="logout">
+            <p>cerrar sessión</p>
+            <p>{{this.$store.state.auth.loggedIn}}</p>
+        </secction>
+        
   </nav>
 </template>
 
@@ -65,6 +65,9 @@ export default {
                 list-style: none
                 margin: 0 30px
                 font-size: 18px
+
+        &-logout
+
             
             
             

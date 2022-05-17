@@ -6,6 +6,7 @@
 
 <script>
 export default {
+    middleware: "isAuthenticated",
     computed: {
       getUserInfo() {
           
@@ -14,6 +15,7 @@ export default {
     },
     mounted(){
         console.log("aa", this.$store.state.auth.loggedIn)
+        console.log("Getter", this.$store.getters['session/isAuthenticated'])
     }
   };
 </script>

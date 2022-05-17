@@ -3,17 +3,17 @@
         <hgroup>
             <h1>Crear cuenta</h1>
         </hgroup>
-        <form class="c-signup-form" id="signup">
-            <input type="text" placeholder="Nombre" id="name">
-            <input type="email" placeholder="E-mail" id="email">
-            <input type="password" placeholder="Contraseña" id="password">
-            <input type="password" placeholder="Repetir contraseña" id="password2">
+        <form class="c-signup-form" id="signup" >
+            <input type="text" placeholder="Nombre" v-model="registerData.firstName">
+            <input type="email" placeholder="E-mail" v-model="registerData.email">
+            <input type="password" placeholder="Contraseña" v-model="registerData.password">
+            <input type="password" placeholder="Repetir contraseña">
             <div class="c-signup-form-check">
                 <input type="checkbox" id="check_email">
                 <p>Recibir notificaciones por e-mail</p>
             </div>
         </form>
-        <div class="btn-primary" v-on:click="sendData()">
+        <div class="btn-primary" v-on:click="register()">
             <p>Crear cuenta</p>
         </div>
 
@@ -26,34 +26,38 @@
 <script>
 export default {
     layout: 'Piscina',
-    methods:{
-        async sendData(){
-            let object = {}
-            let data = document.querySelectorAll('input')
-
-            data.forEach(function(item){
-                if(item.type == 'checkbox'){
-                    object[item.id] = item.checked
-                    item.checked = false
-                }else{
-                    object[item.id] = item.value
-                    item.value = ''
-                }
-            })
-            console.log("Enviado", object)
-
-            try{
-                let res = await this.$axios.post(`/api/auth/signup`, object)
-                console.log('se: ',res.data.session)
-                if(res.data.session){
-                    this.$store.commit('session/signup', res.data)
-                    this.$router.push('/piscina/analisis')
-                }
-                console.log("aqui: ", res)
-            }catch(error){
-                console.log("Error: ", error)
+    data() {
+        return {
+            registerData: {
+                firstName: "",
+                email: "",
+                password: ""
             }
-            
+        }
+    },
+    methods:{
+        async register() {
+            console.log("enviado")
+            try {
+                const user = await this.$axios.$post("/auth/signup", {
+                    firstName: this.registerData.firstName,
+                    email: this.registerData.email,
+                    password: this.registerData.password
+                });
+                
+                try {
+                    let response  = await this.$auth.loginWith("local", {
+                        data: {email: this.registerData.email, password: this.registerData.password}
+                    })
+                    this.$router.push("/piscina/analisis")
+                    console.log("response: ", response )
+                }catch (err){
+                    console.log(err)
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 }

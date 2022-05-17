@@ -15,12 +15,24 @@
           <p>{{this.$store.state.session.status}}</p>
           <p>{{this.$store.state.session.id}}</p>
       </section>
+
+      <li class="nav-item" @click="logout">
+            <!-- <nuxt-link class="nav-link active" aria-current="page" to="/signin">Logout</nuxt-link> -->
+            <p>adioos</p>
+        </li>
+        <p>{{this.$store.state.auth.loggedIn}}</p>
   </nav>
 </template>
 
 <script>
 export default {
-
+    methods: {
+      async logout() {
+          console.log("adios")
+          await this.$auth.logout();  // this method will logout the user and make token to false on the local storage of the user browser
+          this.$router.push("/signin")
+      } 
+    }
 }
 </script>
 

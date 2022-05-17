@@ -1,14 +1,13 @@
 export const state = () => ({
-    status: '',
-    id: ''
+    loggedIn: '',
+    user: ''
 })
 
-export const mutations = {
-    signup(state, data) {
-        state.status = true
-        state.id = data.user
+export const getters = {
+    isAuthenticated(state) {
+      return state.auth.loggedIn; // auth object as default will be added in vuex state, when you initialize nuxt auth
     },
-    logut(state) {
-        state.status = false
+    getUserInfo(state) {
+      return state.auth.user;
     }
-}
+  };

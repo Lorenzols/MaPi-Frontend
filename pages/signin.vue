@@ -3,14 +3,14 @@
         <hgroup>
             <h1>Inicia sesión</h1>
         </hgroup>
-        <form class="c-signup-form">
-            <input type="email" placeholder="E-mail">
-            <input type="password" placeholder="Contraseña">
+        <form class="c-signup-form" @submit.prevent="login">
+            <input type="email" placeholder="E-mail" v-model="loginData.email">
+            <input type="password" placeholder="Contraseña" v-model="loginData.password">
             <div class="c-signup-form-rec">
                 <p>He olvidado la contraseña</p>
             </div>
 
-            <button class="btn-primary" >Iniciar sesión</button>
+            <button class="btn-primary" type="submit" >Iniciar sesión</button>
         </form>
         <div class="line"></div>
 
@@ -20,7 +20,29 @@
 
 <script>
 export default {
-    layout: 'Piscina'
+    layout: 'Piscina',
+    data() {
+        return {
+            loginData: {
+                email: "",
+                password: ""
+            }
+        }
+    },
+    methods: {
+        async login(){
+            console.log("enviado")
+            try {
+                let response  = await this.$auth.loginWith("local", {
+                    data: this.loginData
+                })
+                this.$router.push("/piscina/analisis")
+                console.log("response: ", response )
+            }catch (err){
+                console.log(err)
+            }
+        }
+    }
 }
 </script>
 

@@ -36,7 +36,6 @@ export default {
     },
     methods: {
         async login(){
-            console.log("enviado")
             this.error = ''
 
             if(this.loginData.email != '' && this.loginData.password != ''){
@@ -45,7 +44,6 @@ export default {
                         data: this.loginData
                     })
                     this.$router.push("/piscina/analisis")
-                    console.log("response: ", response )
                     this.error = response.data.error
 
                 }catch (err){

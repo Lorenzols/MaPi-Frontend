@@ -7,11 +7,7 @@
             <input type="text" placeholder="Nombre" v-model="registerData.firstName">
             <input type="email" placeholder="E-mail" v-model="registerData.email">
             <input type="password" placeholder="Contraseña" v-model="registerData.password">
-            <input type="password" placeholder="Repetir contraseña">
-            <div class="c-signup-form-check">
-                <input type="checkbox" id="check_email">
-                <p>Recibir notificaciones por e-mail</p>
-            </div>
+            <input type="password" placeholder="Repetir contraseña" v-model="password2">
         </form>
         <div class="btn-primary" v-on:click="register()">
             <p>Crear cuenta</p>
@@ -20,6 +16,10 @@
         <div class="line"></div>
 
         <NuxtLink class="btn-secundary" to="/signin">Iniciar sesión</NuxtLink>
+
+        <div class="c-errors">
+            <p>{{error}}</p>
+        </div>
     </section>
 </template>
 
@@ -32,32 +32,53 @@ export default {
                 firstName: "",
                 email: "",
                 password: ""
-            }
+            },
+            password2: "",
+            error: ''
         }
     },
     methods:{
         async register() {
-            console.log("enviado")
-            try {
-                const user = await this.$axios.$post("/auth/signup", {
-                    firstName: this.registerData.firstName,
-                    email: this.registerData.email,
-                    password: this.registerData.password
-                });
-                
-                try {
-                    let response  = await this.$auth.loginWith("local", {
-                        data: {email: this.registerData.email, password: this.registerData.email}
-                    })
-                    this.$router.push("/piscina/analisis")
-                    console.log("response: ", response )
-                }catch (err){
-                    console.log(err)
-                }
+            this.error = ""
+            var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}[^'\s]/
 
-            } catch (err) {
-                console.log(err);
-            }
+            let condicionText = "Minimo 8 caracteres, Maximo 15, Una letra mayúscula, Una letra minucula, Un dígito, No espacios en blanco, Al menos 1 caracter especial"
+
+            if(this.registerData.firstName != '' && this.registerData.email != '' && this.registerData.password != '' && this.password2){
+                if(this.registerData.password == this.password2){
+                    try {
+                        const user = await this.$axios.$post("/auth/signup", {
+                            firstName: this.registerData.firstName,
+                            email: this.registerData.email,
+                            password: this.registerData.password
+                        })
+                        
+                        if(!user.isEmail){
+                            try {
+                                let response  = await this.$auth.loginWith("local", {
+                                    data: {email: this.registerData.email, password: this.registerData.password}
+                                })
+                                if(response.data.error){
+                                    this.error = response.data.error
+                                }else{
+                                    this.$router.push("/piscina/analisis")
+                                }
+                            }catch (err){
+                                this.error = "Error en el servidor itentelo más tarde."
+                            }
+                        }else{
+                            this.error = "El email ya existe"
+                        }
+
+                    }catch(err) {
+                        this.error = "Error en el servidor itentelo más tarde."
+                    }
+                }else{
+                    this.error = "Las contraseñas no coinciden"
+                }
+            }else{
+                this.error = "Hay un campo vacio"
+            }  
         }
     }
 }
@@ -104,7 +125,7 @@ export default {
             font-size: 22px
             cursor: pointer
             width: 100%
-            margin-top: 10px
+            margin-top: 20px
             box-sizing: border-box
             text-align: center
 
@@ -127,4 +148,6 @@ export default {
         background: white
         margin: 20px 0 
 
+    .c-errors
+        margin-top: 10px
 </style>

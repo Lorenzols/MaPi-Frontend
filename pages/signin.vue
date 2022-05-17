@@ -15,6 +15,10 @@
         <div class="line"></div>
 
         <NuxtLink class="btn-secundary" to="/signup">Crear cuenta</NuxtLink>
+    
+        <div class="c-error">
+            <p>{{error}}</p>
+        </div>
     </section>
 </template>
 
@@ -26,20 +30,29 @@ export default {
             loginData: {
                 email: "",
                 password: ""
-            }
+            },
+            error: ''
         }
     },
     methods: {
         async login(){
             console.log("enviado")
-            try {
-                let response  = await this.$auth.loginWith("local", {
-                    data: this.loginData
-                })
-                this.$router.push("/piscina/analisis")
-                console.log("response: ", response )
-            }catch (err){
-                console.log(err)
+            this.error = ''
+
+            if(this.loginData.email != '' && this.loginData.password != ''){
+                try {
+                    let response  = await this.$auth.loginWith("local", {
+                        data: this.loginData
+                    })
+                    this.$router.push("/piscina/analisis")
+                    console.log("response: ", response )
+                    this.error = response.data.error
+
+                }catch (err){
+                    this.error = "Error en el servidor itentelo más tarde."
+                }
+            }else{
+                this.error = "Hay un campo vacio"
             }
         }
     }
@@ -106,4 +119,6 @@ export default {
         background: white
         margin: 20px 0 
 
+    .c-error
+        margin-top: 10px
 </style>

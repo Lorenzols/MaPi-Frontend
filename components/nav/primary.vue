@@ -31,8 +31,7 @@
         </secction>
         <section v-else>
             <NuxtLink class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
-        </section>
-        
+        </section>        
   </nav>
 </template>
 

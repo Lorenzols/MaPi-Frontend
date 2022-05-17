@@ -1,9 +1,12 @@
 <template>
-  <Tutorial/>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  mounted(){
+    console.log("hollaaee")
+    this.$router.push("/piscina/analisis")
+  }
 }
 </script>

@@ -6,20 +6,32 @@
             <li>BLOG</li>
             <li>TIENDA</li>
         </ul> -->
-        <section v-if="$store.state.session.status">
-            <p>Iniciado</p>
-            <p>ID: {{this.$store.state.session.id}}</p>
-        </section>
-        <section v-else>
-            <NuxtLink v-if="$route.path != '/signin'" class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
-            <p>{{this.$store.state.session.status}}</p>
-            <p>{{this.$store.state.session.id}}</p>
-        </section>
-
-        <secction class="nav-logout" @click="logout">
-            <p>cerrar sessión</p>
-            <p>{{this.$store.state.auth.loggedIn}}</p>
+        <secction class="nav-profile" v-if="this.$store.state.auth.loggedIn">
+            <div class="nav-profile-img">
+                <img src="~/assets/img/layout/cuenta.png" alt="Cuenta">
+            </div>
+            <ul class="nav-profile-list">
+                <li class="nav-profile-list-name">
+                    <h2>{{this.$store.state.auth.user.firstName}}</h2>
+                </li>
+                <li class="nav-profile-list-email">
+                    <h2>{{this.$store.state.auth.user.email}}</h2>
+                </li>
+                <li class="nav-profile-list-edit">
+                    <div>
+                        <NuxtLink to="/piscina/configuracion">Editar perfil</NuxtLink>
+                    </div>
+                </li>
+                <li class="nav-profile-list-logout">
+                    <div @click="logout">
+                        <h2>Cerrar sesión</h2>
+                    </div>
+                </li>
+            </ul>
         </secction>
+        <section v-else>
+            <NuxtLink class="nav-signin" to="/signin">Iniciar sesión</NuxtLink>
+        </section>
         
   </nav>
 </template>
@@ -47,6 +59,7 @@ export default {
         justify-content: space-between
         padding: 0 25px
         z-index: 2
+        position: relative
 
         &-logo
             font-size: 24px
@@ -66,7 +79,57 @@ export default {
                 margin: 0 30px
                 font-size: 18px
 
-        &-logout
+        &-profile
+            &-img
+                width: 100%
+                cursor: pointer
+                img
+                    width: 40px
+                    height: 40px
+
+            &-list
+                display: flex
+                flex-direction: column
+                background-color: #EA7F54 
+                position: absolute
+                right: 0
+                top: 48px
+                padding: 20px 0px
+                border-bottom-left-radius: 5px
+                border-bottom-right-radius: 5px
+                gap: 10px
+
+                li
+                    list-style: none
+
+                &-name
+                    text-align: center
+
+                &-edit
+                    div
+                        a
+                            width: 100%
+                            text-decoration: none
+                            border: 2px solid white
+                            padding: 5px 10px
+                            text-align: center
+                            border-radius: 5px
+                            cursor: pointer
+                            display: block
+                            box-sizing: border-box
+                &-logout
+                    div
+                        width: 100%
+                        text-decoration: none
+                        border: 2px solid white
+                        padding: 5px 10px
+                        text-align: center
+                        border-radius: 5px
+                        cursor: pointer
+                        display: block
+                        box-sizing: border-box
+                
+                
 
             
             

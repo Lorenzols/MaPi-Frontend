@@ -47,7 +47,7 @@ export default {
                 
                 try {
                     let response  = await this.$auth.loginWith("local", {
-                        data: {email: this.registerData.email, password: this.registerData.password}
+                        data: {email: this.registerData.email, password: this.registerData.email}
                     })
                     this.$router.push("/piscina/analisis")
                     console.log("response: ", response )

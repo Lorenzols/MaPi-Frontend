@@ -1,5 +1,5 @@
 <template>
-    <section class="c-secundary" :class=" !isNavSecundary ? 'p-position' : '' ">
+    <section class="c-secundary" :class=" !isNavSecundary ? 'p-position' : '' " v-if="this.$store.state.auth.loggedIn">
         <section class="c-secundary-nav" v-on:click="click" v-if="isNavSecundary">
             <img src="~/assets/img/piscina/angleLeftWhite.png" alt="">
         </section>

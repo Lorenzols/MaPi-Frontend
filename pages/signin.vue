@@ -7,7 +7,7 @@
             <input type="email" placeholder="E-mail" v-model="loginData.email">
             <input type="password" placeholder="Contraseña" v-model="loginData.password">
             <div class="c-signup-form-rec">
-                <p>He olvidado la contraseña</p>
+                <NuxtLink to="/forgotpassword">He olvidado la contraseña</NuxtLink>
             </div>
 
             <button class="btn-primary" type="submit" >Iniciar sesión</button>
@@ -89,6 +89,9 @@ export default {
                 display: flex
                 gap: 10px
                 align-items: center
+            &-rec
+                a
+                    text-decoration: none
     .btn
         &-primary
             padding: 15px

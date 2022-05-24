@@ -32,7 +32,7 @@
           <h2>Cambiar contraseña</h2>
         </div>
         <div class="box-text">
-          <button class="btn-solid">Cambiar</button>
+          <NuxtLink to="/forgotpassword" class="btn-solid">Cambiar</NuxtLink>
         </div>
       </section>
     </section>
@@ -82,5 +82,6 @@ export default {
     padding: 5px 10px
     border-radius: 5px
     border: none
-    cursor: pointer
+    text-decoration: none
+
 </style>

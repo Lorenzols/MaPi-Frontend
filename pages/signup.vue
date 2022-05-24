@@ -40,42 +40,49 @@ export default {
     methods:{
         async register() {
             this.error = ""
-            var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}[^'\s]/
-
-            let condicionText = "Minimo 8 caracteres, Maximo 15, Una letra mayúscula, Una letra minucula, Un dígito, No espacios en blanco, Al menos 1 caracter especial"
-
+            
+            let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/
+            let condicionText = "Minimo 8 caracteres, Maximo 15, Una letra mayúscula, Una letra minuscula, Un dígito, Al menos 1 caracter especial ($, @, !, %, *, ?, &)"
+            
             if(this.registerData.firstName != '' && this.registerData.email != '' && this.registerData.password != '' && this.password2){
-                if(this.registerData.password == this.password2){
-                    try {
-                        const user = await this.$axios.$post("/auth/signup", {
-                            firstName: this.registerData.firstName,
-                            email: this.registerData.email,
-                            password: this.registerData.password
-                        })
-                        
-                        if(!user.isEmail){
-                            try {
-                                let response  = await this.$auth.loginWith("local", {
-                                    data: {email: this.registerData.email, password: this.registerData.password}
-                                })
-                                if(response.data.error){
-                                    this.error = response.data.error
-                                }else{
-                                    this.$router.push("/piscina/analisis")
-                                }
-                            }catch (err){
-                                this.error = "Error en el servidor itentelo más tarde."
-                            }
-                        }else{
-                            this.error = "El email ya existe"
-                        }
-
-                    }catch(err) {
-                        this.error = "Error en el servidor itentelo más tarde."
-                    }
+                if(!regex.test(this.registerData.password)){
+                    this.error = condicionText
+                    return
                 }else{
-                    this.error = "Las contraseñas no coinciden"
+                    if(this.registerData.password !== this.password2){
+                        this.error = "La contraseña no coincide"
+                        return
+                    }
                 }
+                
+                try {
+                    const user = await this.$axios.$post("/auth/signup", {
+                        firstName: this.registerData.firstName,
+                        email: this.registerData.email,
+                        password: this.registerData.password
+                    })
+                    
+                    if(!user.isEmail){
+                        try {
+                            let response  = await this.$auth.loginWith("local", {
+                                data: {email: this.registerData.email, password: this.registerData.password}
+                            })
+                            if(response.data.error){
+                                this.error = response.data.error
+                            }else{
+                                this.$router.push("/piscina/analisis")
+                            }
+                        }catch (err){
+                            this.error = "Error en el servidor itentelo más tarde."
+                        }
+                    }else{
+                        this.error = "El email ya existe"
+                    }
+
+                }catch(err) {
+                    this.error = "Error en el servidor itentelo más tarde."
+                }
+
             }else{
                 this.error = "Hay un campo vacio"
             }  

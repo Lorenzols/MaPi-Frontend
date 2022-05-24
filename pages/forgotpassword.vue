@@ -4,7 +4,7 @@
             <h1>Cambio de contraseña</h1>
         </hgroup>
         <form class="c-forgotpassword-form" @submit.prevent="forgotm">
-            <input type="email" placeholder="E-mail" v-model="forgotpassword.email">
+            <input type="email" placeholder="E-mail" v-model="email">
 
             <button class="btn-primary" type="submit" >Enviar</button>
         </form>
@@ -19,16 +19,28 @@ export default {
   layout: 'Piscina',
   data() {
     return {
-        forgotpassword: {
-            email: ""
-        },
+        email: "",
         error: ''
     }
   },
 
   methods: {
-    forgotm(){
-      console.log("Email enviado", this.forgotpassword)
+    async forgotm(){
+        this.error = ''
+        try{
+            if(this.email != ''){
+              let email = await this.$axios.post("reset/email", { email: this.email })
+              
+              console.log(email.data.error)
+              this.error = email.data.error
+
+            }else{
+              this.error = "El campo esta vacio"
+            }
+            
+        }catch{
+            this.error = "No se a podido enviar el email"
+        }
     }
   }
 }

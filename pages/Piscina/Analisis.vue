@@ -31,9 +31,11 @@
                     <section class="c-data-fact-cell">
                         <div class="c-circle">
                             <div class="c-circle-fact circle-color-ph">
-                                <h1>6</h1>
+                                <h1 v-if="data">{{data[0].appropriate_value}}</h1>
+                                <h1 v-else>0</h1>
                             </div>
-                            <h2>Ph</h2>
+                            <h2 v-if="data">{{data[1].name}}</h2>
+                            <h2 v-else>0</h2>
                         </div>
                         <div class="report">
                             <div class="report-lyrics">
@@ -80,6 +82,23 @@ export default {
     computed: {
         isNavSecundary() {
             return this.$store.state.navSecundary.isNavSecundary
+        }
+    },
+    async asyncData(ctx){
+        console.log("data: ",ctx.$auth.user.id)
+        console.log("Token: ",ctx.$auth.user)
+        const result = await ctx.$axios.get("pool/analysis/")
+        console.log("datos: ", result.data)
+
+        try{
+            const pool = await ctx.$axios.get("pool")
+            console.log("Pool: ", pool)
+        }catch{
+            console.log("No a")
+        }
+        
+        return{
+            data: result.data
         }
     }
 }

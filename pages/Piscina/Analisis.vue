@@ -31,43 +31,45 @@
                     <section class="c-data-fact-cell">
                         <div class="c-circle">
                             <div class="c-circle-fact circle-color-ph">
-                                <h1 v-if="data">{{data[0].appropriate_value}}</h1>
+                                <h1 v-if="data">{{data[0].value}}</h1>
                                 <h1 v-else>0</h1>
                             </div>
-                            <h2 v-if="data">{{data[1].name}}</h2>
-                            <h2 v-else>0</h2>
+                            <h2 v-if="data">{{data[0].name}}</h2>
+                            <h2 v-else>Sin datos</h2>
                         </div>
                         <div class="report">
                             <div class="report-lyrics">
-                                <h2>pH Bajo</h2>
+                                <h2>{{data[0].name}} {{data[0].status}}</h2>
                             </div>
                             <div class="report-number">
-                                <h2>1pH+</h2>
+                                <h2>{{data[0].diference}} {{data[0].name}}</h2>
                             </div>
                         </div>
                         <div class="pour">
-                            <h2>800ml</h2>
+                            <h2>{{data[0].dosage}} ml</h2>
                         </div> 
                     </section>
                     <section class="c-data-fact-cell">
                         <div class="c-circle">
                             <div class="c-circle-fact circle-color-ppm">
-                                <h1>0.9</h1>
+                                <h1 v-if="data">{{data[1].value}}</h1>
+                                <h1 v-else>0</h1>
                             </div>
-                            <h2>ppm</h2>
+                            <h2 v-if="data">{{data[1].name}}</h2>
+                            <h2 v-else>Sin datos</h2>
                         </div>
 
                         <div class="report">
                             <div class="report-lyrics">
-                                <h2>ppm Bajo</h2>
+                                <h2>{{data[1].name}} {{data[1].status}}</h2>
                             </div>
                             <div class="report-number">
-                                <h2>0.4ppm</h2>
+                                <h2>{{data[1].diference}} {{data[1].name}}</h2>
                             </div>
                         </div>
 
                         <div class="pour">
-                            <h2>450ml</h2>
+                            <h2>{{data[1].dosage}} ml</h2>
                         </div> 
                     </section>
                 </section>                
@@ -88,14 +90,7 @@ export default {
         console.log("data: ",ctx.$auth.user.id)
         console.log("Token: ",ctx.$auth.user)
         const result = await ctx.$axios.get("pool/analysis/")
-        console.log("datos: ", result.data)
-
-        try{
-            const pool = await ctx.$axios.get("pool")
-            console.log("Pool: ", pool)
-        }catch{
-            console.log("No a")
-        }
+        console.log("datos: ", result)
         
         return{
             data: result.data

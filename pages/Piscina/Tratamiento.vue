@@ -7,23 +7,24 @@
       <div class="container">
         <section class="c-data">
           <div class="c-data-title">
-            <h1>6 pH</h1>
+            <h1 v-if="data.poolStatus">{{data.poolStatus[0].value}}</h1>
+            <h1 v-else>0</h1>
           </div>
           <div class="c-data-status">
-            <div class="c-data-status-image">
-              <img src="" alt="">
+            <div class="c-data-status-lyrics">
+              <h2>{{data.poolStatus[0].name}} {{data.poolStatus[0].status}}</h2>
             </div>
             <div class="c-data-status-current">
-              <h2>1 pH+</h2>
+              <h2>{{data.poolStatus[0].diference}} {{data.poolStatus[0].name}}</h2>
             </div>
           </div>
           <div class="c-data-pour">
-            <h2>800ml</h2>
+            <h2>{{data.poolStatus[0].dosage}} ml</h2>
           </div>
 
           <div class="c-data-suitable">
             <div class="c-data-suitable-text">
-              <h2>pH adecuado</h2>
+              <h2>{{data.poolStatus[0].name}} adecuado</h2>
             </div>
             <div class="c-data-suitable-buttons">
               <basic-selection-number valuenumber="7.2" extent="pH" />
@@ -32,7 +33,7 @@
 
           <div class="c-data-current-amount">
             <hgroup>
-              <h1>Cantidad de ph</h1>
+              <h1>Cantidad</h1>
             </hgroup>
             <div class="c-data-current-amount-image">
               <img src="~/assets/img/piscina/traetment/drum.png" alt="Drum">
@@ -41,29 +42,30 @@
               </div>
             </div>
             <div class="c-data-current-amount-worth">
-              <h1>pH</h1>
+              <h1>{{data.poolStatus[0].name}}</h1>
             </div>
           </div>
         </section>
         <section class="c-data">
           <div class="c-data-title">
-            <h1> 0.9 ppm</h1>
+            <h1 v-if="data.poolStatus">{{data.poolStatus[1].value}}</h1>
+            <h1 v-else>0</h1>
           </div>
           <div class="c-data-status">
-            <div class="c-data-status-image">
-              <img src="" alt="">
+            <div class="c-data-status-lyrics">
+              <h2>{{data.poolStatus[1].name}} {{data.poolStatus[1].status}}</h2>
             </div>
             <div class="c-data-status-current">
-              <h2>0.4ppm</h2>
+              <h2>{{data.poolStatus[1].diference}} {{data.poolStatus[1].name}}</h2>
             </div>
           </div>
           <div class="c-data-pour">
-            <h2>450ml</h2>
+            <h2>{{data.poolStatus[1].dosage}} ml</h2>
           </div>
 
           <div class="c-data-suitable">
             <div class="c-data-suitable-text">
-              <h2>ppm adecuado</h2>
+              <h2>{{data.poolStatus[1].name}} adecuado</h2>
             </div>
             <div class="c-data-suitable-buttons">
               <basic-selection-number valuenumber="1.5" extent="ppm"/>
@@ -72,7 +74,7 @@
 
           <div class="c-data-current-amount">
             <hgroup>
-              <h1>Cantidad de ppm</h1>
+              <h1>Cantidad</h1>
             </hgroup>
             <div class="c-data-current-amount-image">
               <img src="~/assets/img/piscina/traetment/drum.png" alt="Drum">
@@ -81,7 +83,7 @@
               </div>
             </div>
             <div class="c-data-current-amount-worth">
-              <h1>ppm</h1>
+              <h1>{{data.poolStatus[1].name}}</h1>
             </div>
           </div>
         </section>
@@ -152,6 +154,16 @@
 <script>
 export default {
   middleware: "isAuthenticated",
+  async asyncData(ctx){
+      const result = await ctx.$axios.get("pool/treatment/")
+      
+      return{
+          data: result.data
+      }
+  },
+  mounted(){
+    console.log("datos: ", this.data.poolStatus)
+  }
 }
 </script>
 
@@ -189,9 +201,11 @@ export default {
       display: flex
       border: 2px solid #844213
 
-      &-image
+      &-lyrics
         width: 30%
         border-right: 2px solid #844213
+        text-align: center
+        padding: 5px 0
 
       &-current
         width: 70%

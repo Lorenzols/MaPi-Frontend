@@ -7,12 +7,12 @@
       <div class="container">
         <section class="c-data">
           <div class="c-data-title">
-            <h1 v-if="data.poolStatus">{{data.poolStatus[0].value}}</h1>
+            <h1 v-if="data.poolStatus">{{data.poolStatus[0].value}} {{data.poolStatus[0].name}}</h1>
             <h1 v-else>0</h1>
           </div>
           <div class="c-data-status">
             <div class="c-data-status-lyrics">
-              <h2>{{data.poolStatus[0].name}} {{data.poolStatus[0].status}}</h2>
+              <h2>{{data.poolStatus[0].status}}</h2>
             </div>
             <div class="c-data-status-current">
               <h2>{{data.poolStatus[0].diference}} {{data.poolStatus[0].name}}</h2>
@@ -48,12 +48,12 @@
         </section>
         <section class="c-data">
           <div class="c-data-title">
-            <h1 v-if="data.poolStatus">{{data.poolStatus[1].value}}</h1>
+            <h1 v-if="data.poolStatus">{{data.poolStatus[1].value}} {{data.poolStatus[1].name}}</h1>
             <h1 v-else>0</h1>
           </div>
           <div class="c-data-status">
             <div class="c-data-status-lyrics">
-              <h2>{{data.poolStatus[1].name}} {{data.poolStatus[1].status}}</h2>
+              <h2>{{data.poolStatus[1].status}}</h2>
             </div>
             <div class="c-data-status-current">
               <h2>{{data.poolStatus[1].diference}} {{data.poolStatus[1].name}}</h2>
@@ -98,7 +98,8 @@
     </div>
 
     <section class="c-automatic">
-      <div class="c-automatic-worth">
+      <div class="c-automatic-top">
+        <div class="c-automatic-worth">
           <div class="c-automatic-worth-status">
             <div class="c-automatic-worth-status-current">
               <h2>1 pH+</h2>
@@ -107,17 +108,9 @@
               <h2>800ml</h2>
             </div>
           </div>
+        </div>
 
-          <div class="c-automatic-worth-modify">
-            <h2 class="c-automatic-worth-modify-title">Modificar valores</h2>
-            <div class="c-automatic-worth-modify-section">
-              <basic-selection-number extent="pH"/>
-              <basic-selection-number extent="pH ml"/>
-            </div>
-          </div>
-      </div>
-
-      <div class="c-automatic-worth">
+        <div class="c-automatic-worth">
           <div class="c-automatic-worth-status">
             <div class="c-automatic-worth-status-current">
               <h2>0.4 ppm</h2>
@@ -126,14 +119,12 @@
               <h2>450ml</h2>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="c-automatic-worth-modify">
-            <h2 class="c-automatic-worth-modify-title">Modificar valores</h2>
-            <div class="c-automatic-worth-modify-section">
-              <basic-selection-number extent="ppm"/>
-              <basic-selection-number extent="ppm ml"/>
-            </div>
-          </div>
+      <div class="c-automatic-time">
+        <h2>Hora del mantenimiento</h2>
+        <input type="time" name="" id="">
       </div>
     </section>
 
@@ -255,16 +246,19 @@ export default {
     gap: 20px
     
 
-  .c-automatic
-    width: 70%
+  .c-automatic-top
     display: flex
     justify-content: space-between
+    margin-bottom: 1rem
+
+  .c-automatic
+    width: 70%
     border: 2px solid #EA7F54
     box-sizing: border-box
     padding: 20px 40px
     @media (max-width: 767px)
       display: block
-      
+
     &-worth
       width: 40%
       @media (max-width: 767px)
@@ -288,6 +282,13 @@ export default {
           display: flex
           margin: 10px 0
           gap: 20px
+    &-time
+      input
+        margin-top: 0.5rem
+        background-color: #522C1D
+        border: 2px solid #844213
+        padding: 0.5rem 1rem
+        font-size: 18px
 
   .c-bombs
     width: 70%

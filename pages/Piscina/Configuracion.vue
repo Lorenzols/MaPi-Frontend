@@ -10,7 +10,7 @@
           <h2>Latitud</h2>
         </div>
         <div class="box-text">
-          <h2>3232</h2>
+          <input class="input-text-config" type="text" id="latitud" :value="data.pool_location_latitud" @change="localizacion('latitud')">
         </div>
       </section>
 
@@ -19,7 +19,7 @@
           <h2>Longitud</h2>
         </div>
         <div class="box-text">
-          <h2>32142</h2>
+          <input class="input-text-config" type="text" id="longitud" :value="data.pool_location_longitud" @change="localizacion('longitud')">
         </div>
       </section>
     </section>
@@ -162,6 +162,10 @@ export default {
       console.log("OE: ", mlv, mcv)
 
       await this.$axios.patch(`pool/configuration/ms/${name}/${mlv}/${mcv}`)
+    },
+    async localizacion(name){
+      let l = document.getElementById(name).value
+      await this.$axios.patch(`pool/configuration/${name}/${l}`)
     }
   },
   mounted(){

@@ -39,7 +39,7 @@
                         </div>
                         <div class="report">
                             <div class="report-lyrics">
-                                <h2>{{data[0].name}} {{data[0].status}}</h2>
+                                <h2>{{data[0].status}}</h2>
                             </div>
                             <div class="report-number">
                                 <h2>{{data[0].diference}} {{data[0].name}}</h2>
@@ -61,7 +61,7 @@
 
                         <div class="report">
                             <div class="report-lyrics">
-                                <h2>{{data[1].name}} {{data[1].status}}</h2>
+                                <h2>{{data[1].status}}</h2>
                             </div>
                             <div class="report-number">
                                 <h2>{{data[1].diference}} {{data[1].name}}</h2>

@@ -27,7 +27,7 @@
               <h2>{{data.poolStatus[0].name}} adecuado</h2>
             </div>
             <div class="c-data-suitable-buttons">
-              <basic-selection-number valuenumber="7.2" extent="pH" />
+              <basic-selection-number :valuenumber="data.poolProducts[0].appropriate_value" :extent="data.poolStatus[0].name" />
             </div>
           </div>
 
@@ -68,7 +68,7 @@
               <h2>{{data.poolStatus[1].name}} adecuado</h2>
             </div>
             <div class="c-data-suitable-buttons">
-              <basic-selection-number valuenumber="1.5" extent="ppm"/>
+              <basic-selection-number :valuenumber="data.poolProducts[1].appropriate_value" :extent="data.poolStatus[1].name"/>
             </div>
           </div>
 
@@ -153,7 +153,7 @@ export default {
       }
   },
   mounted(){
-    console.log("datos: ", this.data.poolStatus)
+    console.log("datos: ", this.data)
   }
 }
 </script>

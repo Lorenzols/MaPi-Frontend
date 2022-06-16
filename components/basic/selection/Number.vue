@@ -4,8 +4,8 @@
           <h2>{{valuenumber}} {{extent}}</h2>
       </div>
       <div class="c-number-buttons">
-          <div class="c-number-buttons-button">+</div>
-          <div class="c-number-buttons-button">-</div>
+          <div class="c-number-buttons-button" @click="cambioValor(1)">+</div>
+          <div class="c-number-buttons-button" @click="cambioValor(0)">-</div>
       </div>
   </section>
 </template>
@@ -20,6 +20,17 @@ export default {
         extent: {
             type: String,
             required: true
+        }
+    },
+    methods:{
+        async cambioValor(signo){
+            console.log("Cambiando: ",signo ,this.extent)
+            const result = await this.$axios.patch("pool/treatment/ap", {"signo": signo, "producto": this.extent})
+
+            // const result = await this.$axios.get("pool/analysis/")
+            // let valueOK = result.data.filter(a => a.name == this.extent)[0].appropriate_value
+            this.valuenumber = result.data.valueOk[0].appropriate_value
+            // console.log("AQUI: ", result.data.valueOk[0].appropriate_value)
         }
     }
 }

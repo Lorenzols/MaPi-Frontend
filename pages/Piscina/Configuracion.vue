@@ -7,10 +7,19 @@
       </hgroup>
       <section class="box">
         <div class="box-text box-text-primary">
-          <h2>Lugar del clima</h2>
+          <h2>Latitud</h2>
         </div>
         <div class="box-text">
-          <h2>Valencia</h2>
+          <h2>3232</h2>
+        </div>
+      </section>
+
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>Longitud</h2>
+        </div>
+        <div class="box-text">
+          <h2>32142</h2>
         </div>
       </section>
     </section>
@@ -33,6 +42,87 @@
         </div>
         <div class="box-text">
           <NuxtLink to="/forgotpassword" class="btn-solid">Cambiar</NuxtLink>
+        </div>
+      </section>
+    </section>
+
+    <section class="c-box">
+      <hgroup class="c-box-title">
+        <h1>Automatico</h1>
+      </hgroup>
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>Filtrado</h2>
+        </div>
+        <div class="box-text">
+          <basic-button-checkbox />
+        </div>
+      </section>
+
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>Tratamiento</h2>
+        </div>
+        <div class="box-text">
+          <basic-button-checkbox />
+        </div>
+      </section>
+    </section>
+
+    <section class="c-box">
+      <hgroup class="c-box-title">
+        <h1>Piscina</h1>
+      </hgroup>
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>Metros m³</h2>
+        </div>
+        <div class="box-text">
+          <h2>30 m³</h2>
+        </div>
+      </section>
+    </section>
+
+    <section class="c-box">
+      <hgroup class="c-box-title">
+        <h1>Mescla Ph+</h1>
+      </hgroup>
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>ml</h2>
+        </div>
+        <div class="box-text">
+          <h2>20</h2>
+        </div>
+      </section>
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>m³</h2>
+        </div>
+        <div class="box-text">
+          <h2>1</h2>
+        </div>
+      </section>
+    </section>
+
+    <section class="c-box">
+      <hgroup class="c-box-title">
+        <h1>Mescla ppm</h1>
+      </hgroup>
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>ml</h2>
+        </div>
+        <div class="box-text">
+          <h2>20</h2>
+        </div>
+      </section>
+      <section class="box">
+        <div class="box-text box-text-primary">
+          <h2>m³</h2>
+        </div>
+        <div class="box-text">
+          <h2>1</h2>
         </div>
       </section>
     </section>

@@ -93,19 +93,19 @@
         <hgroup>
           <h1>Mantenimiento automático</h1>
         </hgroup>
-        <basic-button-checkbox />
+        <basic-button-checkbox @change.native="interructor('treatment')" nombre="treatment" idp="treatment" :checkedp="dataConfig.treatment_auto"/>
       </div>
     </div>
 
-    <section class="c-automatic">
+    <section class="c-automatic" v-if="dataConfig.treatment_auto">
       <div class="c-automatic-top">
         <div class="c-automatic-worth">
           <div class="c-automatic-worth-status">
             <div class="c-automatic-worth-status-current">
-              <h2>1 pH+</h2>
+              <h2>{{data.poolStatus[0].diference}} {{data.poolStatus[0].name}}</h2>
             </div>
             <div class="c-automatic-worth-status-pour">
-              <h2>800ml</h2>
+              <h2>{{data.poolStatus[0].dosage}} ml</h2>
             </div>
           </div>
         </div>
@@ -113,10 +113,10 @@
         <div class="c-automatic-worth">
           <div class="c-automatic-worth-status">
             <div class="c-automatic-worth-status-current">
-              <h2>0.4 ppm</h2>
+              <h2>{{data.poolStatus[1].diference}} {{data.poolStatus[1].name}}</h2>
             </div>
             <div class="c-automatic-worth-status-pour">
-              <h2>450ml</h2>
+              <h2>{{data.poolStatus[1].dosage}} ml</h2>
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@
 
       <div class="c-automatic-time">
         <h2>Hora del mantenimiento</h2>
-        <input type="time" name="" id="">
+        <input type="time" :value="timevalue" name="timetreatment" id="timetreatment" @change="time('timetreatment')">
       </div>
     </section>
 
@@ -146,11 +146,31 @@
 export default {
   middleware: "isAuthenticated",
   async asyncData(ctx){
-      const result = await ctx.$axios.get("pool/treatment/")
-      
+    const result = await ctx.$axios.get("pool/treatment/")
+    const resultConfig = await ctx.$axios.get("pool/configuration")
+
+    let time = resultConfig.data.configuration[0].initial_treatment_time.split('T')[1].split('.')[0]
+    console.log("sss", time)
+    
       return{
-          data: result.data
+          data: result.data,
+          dataConfig: resultConfig.data.configuration[0],
+          timevalue: time
       }
+  },
+  methods:{
+    async interructor(nombre){
+      let check = document.getElementById(nombre).checked
+      console.log("Pulsado", check, nombre)
+      this.dataConfig.treatment_auto = check
+      await this.$axios.patch(`pool/configuration/${nombre}`, {"check": check})
+    },
+    async time(id){
+      let hora = document.getElementById(id).value
+      
+      await this.$axios.patch('pool/treatment/time', {"time": hora})
+      console.log("HORA:", hora)
+    }
   },
   mounted(){
     console.log("datos: ", this.data)

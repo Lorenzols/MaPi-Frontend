@@ -38,7 +38,7 @@
             <div class="c-data-current-amount-image">
               <img src="~/assets/img/piscina/traetment/drum.png" alt="Drum">
               <div class="c-data-current-amount-image-text">
-                <h1>3L</h1>
+                <h1>{{data.poolProducts[0].deposit}} L</h1>
               </div>
             </div>
             <div class="c-data-current-amount-worth">
@@ -79,7 +79,7 @@
             <div class="c-data-current-amount-image">
               <img src="~/assets/img/piscina/traetment/drum.png" alt="Drum">
               <div class="c-data-current-amount-image-text">
-                <h1>3L</h1>
+                <h1>{{data.poolProducts[1].deposit}} L</h1>
               </div>
             </div>
             <div class="c-data-current-amount-worth">

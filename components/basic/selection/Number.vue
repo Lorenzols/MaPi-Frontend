@@ -29,7 +29,7 @@ export default {
 
             // const result = await this.$axios.get("pool/analysis/")
             // let valueOK = result.data.filter(a => a.name == this.extent)[0].appropriate_value
-            this.valuenumber = result.data.valueOk[0].appropriate_value
+            this.valuenumber = String(result.data.valueOk[0].appropriate_value)
             // console.log("AQUI: ", result.data.valueOk[0].appropriate_value)
         }
     }

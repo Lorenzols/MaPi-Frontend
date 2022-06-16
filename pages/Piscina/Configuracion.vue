@@ -83,7 +83,7 @@
       </section>
     </section>
 
-    <section class="c-box">
+    <section class="c-box" @change="mescla('mlph', 'mcph', dataAnalisys[0].name)">
       <hgroup class="c-box-title">
         <h1>Mescla Ph+</h1>
       </hgroup>
@@ -92,7 +92,7 @@
           <h2>ml</h2>
         </div>
         <div class="box-text">
-          <h2>20</h2>
+          <input class="input-text-config" type="text" id="mlph" :value="dataAnalisys[0].dosage_recommend_ml">
         </div>
       </section>
       <section class="box">
@@ -100,12 +100,12 @@
           <h2>m³</h2>
         </div>
         <div class="box-text">
-          <h2>1</h2>
+          <input class="input-text-config" type="text" id="mcph" :value="dataAnalisys[0].dosage_recommend_mc">
         </div>
       </section>
     </section>
 
-    <section class="c-box">
+    <section class="c-box" @change="mescla('mlph2', 'mcph2', dataAnalisys[1].name)">
       <hgroup class="c-box-title">
         <h1>Mescla ppm</h1>
       </hgroup>
@@ -114,7 +114,7 @@
           <h2>ml</h2>
         </div>
         <div class="box-text">
-          <h2>20</h2>
+          <input class="input-text-config" type="text" id="mlph2" :value="dataAnalisys[1].dosage_recommend_ml">
         </div>
       </section>
       <section class="box">
@@ -122,7 +122,7 @@
           <h2>m³</h2>
         </div>
         <div class="box-text">
-          <h2>1</h2>
+          <input class="input-text-config" type="text" id="mcph2" :value="dataAnalisys[1].dosage_recommend_mc">
         </div>
       </section>
     </section>
@@ -137,9 +137,12 @@ export default {
 
     const result = await ctx.$axios.get("pool/configuration")
     console.log("datos: ", result)
-    
+    const resultAnalisys = await ctx.$axios.get("pool/treatment/")
+
+    // console.log("DATOS AN: ", resultAnalisys.data[0])
     return{
-      data: result.data.configuration[0]
+      data: result.data.configuration[0],
+      dataAnalisys: resultAnalisys.data.poolProducts
     }
   },
   methods:{
@@ -152,10 +155,17 @@ export default {
       let value = document.getElementById(nombre).value
       await this.$axios.patch(`pool/configuration/${nombre}`, {"metersCubics": value})
       console.log("CAMBIO: ", value)
+    },
+    async mescla(mlid, mcvid, name){
+      let mlv = document.getElementById(mlid).value
+      let mcv = document.getElementById(mcvid).value
+      console.log("OE: ", mlv, mcv)
+
+      await this.$axios.patch(`pool/configuration/ms/${name}/${mlv}/${mcv}`)
     }
   },
   mounted(){
-    console.log("EE: ", this.data)
+    console.log("EE: ", this.dataA)
   }
 }
 </script>

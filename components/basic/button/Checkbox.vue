@@ -1,7 +1,7 @@
 <template>
   <div class="c-checkbox">
     <label class="content-input">
-      <input type="checkbox" name="Vehiculo" id="autopista" value="autopista">
+      <input type="checkbox" :name="nombre" :id="idp" :checked="checkedp">
       <i></i>
     </label>
   </div>
@@ -9,7 +9,20 @@
 
 <script>
 export default {
-
+  props:{
+    nombre:{
+        type: String,
+        required: false
+    },
+    idp: {
+        type: String,
+        required: false
+    },
+    checkedp: {
+      type: Boolean,
+      required: false
+    }
+  }
 }
 </script>
 

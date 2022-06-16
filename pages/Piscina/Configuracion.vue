@@ -33,7 +33,7 @@
           <h2>Nombre</h2>
         </div>
         <div class="box-text">
-          <h2>Lorenzo</h2>
+          <h2>{{this.$store.state.auth.user.firstName}}</h2>
         </div>
       </section>
       <section class="box">
@@ -55,7 +55,7 @@
           <h2>Filtrado</h2>
         </div>
         <div class="box-text">
-          <basic-button-checkbox />
+          <basic-button-checkbox @change.native="interructor('filtering')" nombre="filtering" idp="filtering" :checkedp="data.filtering_auto" />
         </div>
       </section>
 
@@ -64,7 +64,7 @@
           <h2>Tratamiento</h2>
         </div>
         <div class="box-text">
-          <basic-button-checkbox />
+          <basic-button-checkbox @change.native="interructor('treatment')" nombre="treatment" idp="treatment" :checkedp="data.treatment_auto" />
         </div>
       </section>
     </section>
@@ -78,7 +78,7 @@
           <h2>Metros m³</h2>
         </div>
         <div class="box-text">
-          <h2>30 m³</h2>
+          <input class="input-text-config" type="text" id="mc" :value="data.meters_cubics_pool" @change="mc('mc')">
         </div>
       </section>
     </section>
@@ -132,7 +132,31 @@
 
 <script>
 export default {
-  middleware: "isAuthenticated"
+  middleware: "isAuthenticated",
+  async asyncData(ctx){
+
+    const result = await ctx.$axios.get("pool/configuration")
+    console.log("datos: ", result)
+    
+    return{
+      data: result.data.configuration[0]
+    }
+  },
+  methods:{
+    async interructor(nombre){
+      let check = document.getElementById(nombre).checked
+      let result = await this.$axios.patch(`pool/configuration/${nombre}`, {"check": check})
+      console.log("Pulsado", check, nombre)
+    },
+    async mc(nombre){
+      let value = document.getElementById(nombre).value
+      await this.$axios.patch(`pool/configuration/${nombre}`, {"metersCubics": value})
+      console.log("CAMBIO: ", value)
+    }
+  },
+  mounted(){
+    console.log("EE: ", this.data)
+  }
 }
 </script>
 
@@ -174,4 +198,11 @@ export default {
     border: none
     text-decoration: none
 
+  .input-text-config
+    border: none
+    background-color: #522C1D
+    font-size: 18px
+    text-align: center
+    width: 100%
+    outline: none
 </style>

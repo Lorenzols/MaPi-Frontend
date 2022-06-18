@@ -50,7 +50,7 @@ export default {
             // position: absolute
             // top: 48px
             // bottom: 48px
-            z-index: 1
+            z-index: 2
 
         ul
             list-style: none

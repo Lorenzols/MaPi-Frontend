@@ -70,7 +70,7 @@ export default {
         color: white
         justify-content: space-between
         padding: 0 25px
-        z-index: 2
+        z-index: 3
         position: relative
 
         &-logo

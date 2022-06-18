@@ -45,24 +45,18 @@ export default {
   },
   methods: {
     newtime: function(){
-      console.log("hola",this.boxtime.length)
       if(this.boxtime.length == 0){
         this.boxtime.push(1)
-        console.log("de")
       }else{
         this.boxtime.push(this.boxtime.length + 1)
       }
     },
     async interructor(nombre){
       let check = document.getElementById(nombre).checked
-      console.log("Pulsado", check, nombre)
       this.dataConfig.filtering_auto = check
       await this.$axios.patch(`pool/configuration/${nombre}`, {"check": check})
     }
-  },
-    mounted(){
-        console.log("CONFIIGGG2: ", this.filterDays)
-    }
+  }
 }
 </script>
 

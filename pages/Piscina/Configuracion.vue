@@ -136,10 +136,8 @@ export default {
   async asyncData(ctx){
 
     const result = await ctx.$axios.get("pool/configuration")
-    console.log("datos: ", result)
     const resultAnalisys = await ctx.$axios.get("pool/treatment/")
 
-    // console.log("DATOS AN: ", resultAnalisys.data[0])
     return{
       data: result.data.configuration[0],
       dataAnalisys: resultAnalisys.data.poolProducts
@@ -149,17 +147,14 @@ export default {
     async interructor(nombre){
       let check = document.getElementById(nombre).checked
       let result = await this.$axios.patch(`pool/configuration/${nombre}`, {"check": check})
-      console.log("Pulsado", check, nombre)
     },
     async mc(nombre){
       let value = document.getElementById(nombre).value
       await this.$axios.patch(`pool/configuration/${nombre}`, {"metersCubics": value})
-      console.log("CAMBIO: ", value)
     },
     async mescla(mlid, mcvid, name){
       let mlv = document.getElementById(mlid).value
       let mcv = document.getElementById(mcvid).value
-      console.log("OE: ", mlv, mcv)
 
       await this.$axios.patch(`pool/configuration/ms/${name}/${mlv}/${mcv}`)
     },
@@ -171,9 +166,6 @@ export default {
       let v = document.getElementById(id).value
       await this.$axios.patch(`pool/user/${v}`)
     }
-  },
-  mounted(){
-    console.log("EE: ", this.dataA)
   }
 }
 </script>

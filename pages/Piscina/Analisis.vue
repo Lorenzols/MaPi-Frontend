@@ -87,20 +87,13 @@ export default {
         }
     },
     async asyncData(ctx){
-        console.log("data: ",ctx.$auth.user.id)
-        console.log("Token: ",ctx.$auth.user)
         const result = await ctx.$axios.get("pool/analysis/")
-        console.log("datos: ", result)
-
         const temp = await ctx.$axios.get("pool/weather")
         
         return{
             data: result.data,
             temp: temp.data
         }
-    },
-    mounted(){
-        console.log("AAA: ", this.temp)
     }
 }
 </script>

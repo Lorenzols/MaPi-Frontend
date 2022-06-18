@@ -160,19 +160,13 @@ export default {
   methods:{
     async interructor(nombre){
       let check = document.getElementById(nombre).checked
-      console.log("Pulsado", check, nombre)
       this.dataConfig.treatment_auto = check
       await this.$axios.patch(`pool/configuration/${nombre}`, {"check": check})
     },
     async time(id){
       let hora = document.getElementById(id).value
-      
       await this.$axios.patch('pool/treatment/time', {"time": hora})
-      console.log("HORA:", hora)
     }
-  },
-  mounted(){
-    console.log("datos: ", this.data)
   }
 }
 </script>

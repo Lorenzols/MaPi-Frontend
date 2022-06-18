@@ -30,8 +30,6 @@ export default {
         try{
             if(this.email != ''){
               let email = await this.$axios.post("reset/email", { email: this.email })
-              
-              console.log(email.data.error)
               this.error = email.data.error
 
             }else{

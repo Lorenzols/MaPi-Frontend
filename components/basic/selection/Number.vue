@@ -24,15 +24,8 @@ export default {
     },
     methods:{
         async cambioValor(signo){
-            console.log("Cambiando: ",signo ,this.extent)
             const result = await this.$axios.patch("pool/treatment/ap", {"signo": signo, "producto": this.extent})
-
-            // const result = await this.$axios.get("pool/analysis/")
-            // let valueOK = result.data.filter(a => a.name == this.extent)[0].appropriate_value
             this.valuenumber = String(result.data.valueOk[0].appropriate_value)
-            // console.log("AQUI: ", result.data.valueOk[0].appropriate_value)
-
-            // console.log(new Date().toLocaleTimeString('es-ES'))
         }
     }
 }

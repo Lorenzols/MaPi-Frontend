@@ -11,7 +11,7 @@
             <li> <NuxtLink to="/piscina/clima">CLIMA</NuxtLink></li>
             <li> <NuxtLink to="/piscina/tratamiento">TRATAMIENTO</NuxtLink></li>
             <li> <NuxtLink to="/piscina/filtrado">FILTRADO</NuxtLink></li>
-            <li> <NuxtLink to="/piscina/historial">HISTORIAL</NuxtLink></li>
+            <!-- <li> <NuxtLink to="/piscina/historial">HISTORIAL</NuxtLink></li> -->
             <li> <NuxtLink to="/piscina/configuracion">CONFIGURACIÓN</NuxtLink></li>
         </ul>
     </section>

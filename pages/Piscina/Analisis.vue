@@ -2,7 +2,7 @@
     <section class="c-analisis" >
         <section class="temperatures">
             <section >
-                <basic-climate-city sizeimg="50px"/>
+                <basic-climate-city sizeimg="50px" :temApi="temp.apiweather"/>
             </section>
             <section class="c-climate">
                 <section class="c-climate">
@@ -10,7 +10,7 @@
                         <img src="~/assets/img/piscina/palm.png" alt="Climate" width="100%" height="100%">
                     </div>
                     <div class="c-climate-text">
-                        <h2>32 ºC</h2>
+                        <h2>{{temp.tAmbient}} ºC</h2>
                     </div>
                 </section>
                 <section class="c-climate">
@@ -18,7 +18,7 @@
                         <img src="~/assets/img/piscina/piscina.png" alt="Climate" width="100%" height="100%">
                     </div>
                     <div class="c-climate-text">
-                        <h2>32 ºC</h2>
+                        <h2>{{temp.tPool}} ºC</h2>
                     </div>
                 </section>
             </section>
@@ -91,10 +91,16 @@ export default {
         console.log("Token: ",ctx.$auth.user)
         const result = await ctx.$axios.get("pool/analysis/")
         console.log("datos: ", result)
+
+        const temp = await ctx.$axios.get("pool/weather")
         
         return{
-            data: result.data
+            data: result.data,
+            temp: temp.data
         }
+    },
+    mounted(){
+        console.log("AAA: ", this.temp)
     }
 }
 </script>

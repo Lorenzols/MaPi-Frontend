@@ -1,11 +1,11 @@
 <template>
   <section class="c-climate-city">
       <div class="c-climate-city-image" :style="'width:'+sizeimg+'; height:'+sizeimg">
-          <img src="~/assets/img/piscina/sun.png" alt="City temperature" width="100%" height="100%">
+          <img :src="`https://openweathermap.org/img/wn/${temApi.weather[0].icon}@2x.png`" alt="City temperature" width="100%" height="100%">
       </div>
       <div class="c-climate-city-c-text">
-          <h2 :class="{'big-text': isbigtext}">Valencia</h2>
-          <h2 :class="{'big-text': isbigtext}">30 ºC</h2>
+          <h2 :class="{'big-text': isbigtext}">{{temApi.name}}</h2>
+          <h2 :class="{'big-text': isbigtext}">{{temApi.main.temp}} ºC</h2>
       </div>
   </section>
 </template>
@@ -19,6 +19,10 @@ export default {
         },
         isbigtext: {
             type: Boolean,
+            required: false
+        },
+        temApi: {
+            type: Object,
             required: false
         }
     }

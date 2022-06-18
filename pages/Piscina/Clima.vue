@@ -2,16 +2,16 @@
   <section class="c-climate">
       <h1 class="c-climate-title">CLIMA</h1>
       <section class="c-data">
-        <basic-climate-city sizeimg="180px" :isbigtext="true" class="c-data-climate-city"/>
+        <basic-climate-city sizeimg="180px" :isbigtext="true" :temApi="temp.apiweather" class="c-data-climate-city"/>
         <section class="c-pool">
           <div class="c-pool-climate">
-            <h1>20 ºC</h1>
+            <h1>{{temp.tAmbient}} ºC</h1>
           </div>
           <div class="c-pool-image">
             <img src="~/assets/img/piscina/climate/pool.png" alt="">
           </div>
           <div class="c-pool-water">
-            <h1>19 ºC</h1>
+            <h1>{{temp.tPool}} ºC</h1>
           </div>
         </section>
       </section>
@@ -20,7 +20,14 @@
 
 <script>
 export default {
-  middleware: "isAuthenticated"
+  middleware: "isAuthenticated",
+    async asyncData(ctx){
+        const temp = await ctx.$axios.get("pool/weather")
+        
+        return{
+            temp: temp.data
+        }
+    }
 }
 </script>
 

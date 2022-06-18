@@ -3,14 +3,14 @@
       <h1 class="c-filtered-title">FILTRADO</h1>
       <div class="c-filtered-automatic">
         <h1 class="c-filtered-automatic-text-button">Bomba de agua automatica</h1>
-        <basic-button-checkbox />
+        <basic-button-checkbox @change.native="interructor('filtering')" nombre="filtering" idp="filtering" :checkedp="dataConfig.filtering_auto" />
       </div>
-      <div class="c-filtered-schedule">
+      <div class="c-filtered-schedule" v-if="dataConfig.filtering_auto">
         <h1 class="c-filtered-schedule-title">Horario de filtrado</h1>
-        <pages-pool-filtered-boxtime />
-        <div class="c-filtered-schedule-button">
+        <pages-pool-filtered-boxtime :timeonI="timeonI" :timeoffI="timeoffI" :bottonDays="filterDays"/>
+        <!-- <div class="c-filtered-schedule-button">
           <button @click="newtime()">Nueva</button>
-        </div>
+        </div> -->
       </div>
 
       <div class="c-filtered-schedule-new">
@@ -22,7 +22,22 @@
 <script>
 export default {
   middleware: "isAuthenticated",
-  
+    async asyncData(ctx){
+      const resultCofig = await ctx.$axios.get("pool/configuration")
+      const filterData = await ctx.$axios.get("pool/filtering")
+      const filterDays = await ctx.$axios.get("pool/filtering/days")
+
+      let timeonI = filterData.data.filter[0].time_on.split('T')[1].split('.')[0]
+      let timeoffI = filterData.data.filter[0].time_off.split('T')[1].split('.')[0]
+
+      return{
+        dataConfig: resultCofig.data.configuration[0],
+        filterData: filterData.data.filter[0],
+        timeonI: timeonI,
+        timeoffI: timeoffI,
+        filterDays: filterDays.data.days[0]
+      }
+  },
   data() {
     return{
       boxtime: []
@@ -37,8 +52,17 @@ export default {
       }else{
         this.boxtime.push(this.boxtime.length + 1)
       }
+    },
+    async interructor(nombre){
+      let check = document.getElementById(nombre).checked
+      console.log("Pulsado", check, nombre)
+      this.dataConfig.filtering_auto = check
+      await this.$axios.patch(`pool/configuration/${nombre}`, {"check": check})
     }
-  }
+  },
+    mounted(){
+        console.log("CONFIIGGG2: ", this.filterDays)
+    }
 }
 </script>
 

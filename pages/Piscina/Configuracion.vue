@@ -33,7 +33,7 @@
           <h2>Nombre</h2>
         </div>
         <div class="box-text">
-          <h2>{{this.$store.state.auth.user.firstName}}</h2>
+          <input class="input-text-config" type="text" id="namef" :value="$store.state.auth.user.firstName" @change="updatename('namef')">
         </div>
       </section>
       <section class="box">
@@ -166,6 +166,10 @@ export default {
     async localizacion(name){
       let l = document.getElementById(name).value
       await this.$axios.patch(`pool/configuration/${name}/${l}`)
+    },
+    async updatename(id){
+      let v = document.getElementById(id).value
+      await this.$axios.patch(`pool/user/${v}`)
     }
   },
   mounted(){

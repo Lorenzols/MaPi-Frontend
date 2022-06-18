@@ -150,7 +150,6 @@ export default {
     const resultConfig = await ctx.$axios.get("pool/configuration")
 
     let time = resultConfig.data.configuration[0].initial_treatment_time.split('T')[1].split('.')[0]
-    console.log("sss", time)
     
       return{
           data: result.data,

@@ -37,6 +37,4 @@ export default {
     background-color: $color-secundary
     width: 100%
 
-  
-
 </style>

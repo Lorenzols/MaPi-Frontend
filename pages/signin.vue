@@ -1,24 +1,31 @@
 <template>
-    <section class="c-signup">
-        <hgroup>
-            <h1>Inicia sesión</h1>
-        </hgroup>
-        <form class="c-signup-form" @submit.prevent="login">
-            <input type="email" placeholder="E-mail" v-model="loginData.email">
-            <input type="password" placeholder="Contraseña" v-model="loginData.password">
-            <div class="c-signup-form-rec">
-                <NuxtLink to="/forgotpassword">He olvidado la contraseña</NuxtLink>
+    <section class="c-pool">
+        <section class="c-signup">
+            <hgroup>
+                <h1>Inicia sesión</h1>
+            </hgroup>
+            <form class="c-signup-form" @submit.prevent="login">
+                <input type="email" placeholder="E-mail" v-model="loginData.email">
+                <input type="password" placeholder="Contraseña" v-model="loginData.password">
+                <div class="c-signup-form-rec">
+                    <NuxtLink to="/forgotpassword">He olvidado la contraseña</NuxtLink>
+                </div>
+
+                <button class="btn-primary" type="submit" >Iniciar sesión</button>
+            </form>
+            <div class="line"></div>
+
+            <NuxtLink class="btn-secundary" to="/signup">Crear cuenta</NuxtLink>
+        
+            <div class="c-error">
+                <p>{{error}}</p>
             </div>
-
-            <button class="btn-primary" type="submit" >Iniciar sesión</button>
-        </form>
-        <div class="line"></div>
-
-        <NuxtLink class="btn-secundary" to="/signup">Crear cuenta</NuxtLink>
-    
-        <div class="c-error">
-            <p>{{error}}</p>
-        </div>
+        </section>
+        <section>
+            <div class="c-pool-secundary">
+                <img width="100%" height="100%" src="~/assets/img/pool.jpg" alt="">
+            </div>
+        </section>
     </section>
 </template>
 
@@ -58,6 +65,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+
+    .c-pool 
+        height: 100%
+        display: flex
+
+        &-secundary
+            width: 100%
+            height: 100%
+            @media (max-width: 767px)
+                display: none
+
     .c-signup
         padding: 20px 40px
         padding-top: 100px

@@ -85,7 +85,7 @@
 
     <section class="c-box" @change="mescla('mlph', 'mcph', dataAnalisys[0].name)">
       <hgroup class="c-box-title">
-        <h1>Mescla Ph+</h1>
+        <h1>Mezcla Ph+</h1>
       </hgroup>
       <section class="box">
         <div class="box-text box-text-primary">
@@ -107,7 +107,7 @@
 
     <section class="c-box" @change="mescla('mlph2', 'mcph2', dataAnalisys[1].name)">
       <hgroup class="c-box-title">
-        <h1>Mescla ppm</h1>
+        <h1>Mezcla ppm</h1>
       </hgroup>
       <section class="box">
         <div class="box-text box-text-primary">
